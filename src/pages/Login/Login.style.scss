@@ -1,0 +1,42 @@
+.login-page {
+
+    &__container {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        &__left {
+            width: 65%;
+            height: 100%;
+            background-color: var(--blue-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &__icon {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    scale: 12;
+                    fill: var(--whitesmoke);
+                }
+            }
+        }
+
+        &__right {
+            width: 35%;
+            height: 100%;
+            background-color: var(--whitesmoke);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 0px 40px 11px rgba(0,0,0,0.8);
+        }
+    }
+}

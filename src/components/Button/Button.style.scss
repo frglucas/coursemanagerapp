@@ -1,0 +1,18 @@
+.button-component {
+
+    &__container {
+        width: 100%;
+        height: 40px;
+
+        button {
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--blue-primary);
+            background-color: var(--blue-primary);
+            border-radius: 5px;
+            color: whitesmoke;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    }
+}
