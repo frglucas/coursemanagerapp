@@ -1,7 +1,7 @@
-import { ReactNode, createContext, useEffect, useMemo, useState } from "react"
+import { ReactNode, createContext, useCallback, useEffect, useMemo, useState } from "react"
 import { LoginForm, User, AuthDataContext } from "../models"
 import { useNavigate } from "react-router-dom"
-import { usePostLogin, api, useGetUser, registerInterceptors } from "../hooks"
+import { usePostLogin, api, useGetUser } from "../hooks"
 import { PATH_ROUTES } from "../constants"
 
 type Props = {
@@ -74,22 +74,21 @@ export const AuthProvider = ({ children }: Props) => {
             console.error(err);
             signOut()
         }
-    };
+    }
 
-    const signOut = () => {
+    const signOut = useCallback(() => {
         api.defaults.headers.common['Authorization'] = null
         sessionStorage.removeItem("token");
         sessionStorage.removeItem("user");
         setUser(null);
         setToken(null);
         navigate("/login", { state: { isSignOut: true } });
-    };
+    }, [navigate])
 
     useEffect(() => {
         api.defaults.headers.common['Authorization'] = `Bearer ${token}`
-        registerInterceptors()
         updateUser()
-    }, [])
+    }, [token])
 
     const dataContext = useMemo(() => ({ user, signIn, signOut, token }), [ user, signIn, signOut, token ])
 

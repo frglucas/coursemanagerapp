@@ -12,6 +12,7 @@ export const api : AxiosInstance = axios.create({
 })
 
 export const registerInterceptors = () => {
+
     api.interceptors.response.use(
         function (response) {
             return response;
