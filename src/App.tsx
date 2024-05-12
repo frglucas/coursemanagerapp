@@ -1,22 +1,21 @@
-import React from 'react';
-import './App.css';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
-import { Error, Login } from './pages';
-import { ToastProvider } from './contexts';
-import { LoggedInUserProvider } from './contexts/LoggedInUser.context';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { ToastProvider, AuthProvider } from './contexts';
+import { Private, ROUTES } from './routes';
 
 const App = () => {
+
   return (
     <BrowserRouter>
-      <LoggedInUserProvider>
+      <AuthProvider>
         <ToastProvider>
           <Routes>
-            <Route path='/login' element={<Login />}/>
-            <Route path='/error' element={<Error />} />
-            <Route path='*' element={<Navigate to={'/error'} />} />
+            <Route element={<Private />}>
+              { ROUTES.PRIVATE.map(({ path, element }, index) => <Route key={`private-route-${index}`} path={path} element={element} />) }
+            </Route>
+            { ROUTES.PUBLIC.map(({ path, element }, index) => <Route key={`public-route-${index}`} path={path} element={element} />) }
           </Routes>
         </ToastProvider>
-      </LoggedInUserProvider>
+      </AuthProvider>
     </BrowserRouter>
   )
 }

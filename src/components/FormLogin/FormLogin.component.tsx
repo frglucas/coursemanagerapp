@@ -7,6 +7,7 @@ import { ChangeEvent, useState } from 'react'
 
 import './FormLogin.style.scss'
 import { LoginForm } from '../../models'
+import { PATH_ROUTES } from '../../constants'
 
 type Props = {
     handle: (obj: LoginForm) => void
@@ -41,7 +42,7 @@ export const FormLogin = ({ handle }: Props) => {
             <Input label='Senha' value={password} onChange={handleChangePassword} type="password" />
             <Button name='Entrar' onClick={handleLogin} />
             <span className='form-login-component__container__span'>
-                ou <NavLink to={'/login'}>Cadastre-se</NavLink>
+                ou <NavLink to={PATH_ROUTES.LOGIN}>Cadastre-se</NavLink>
             </span>
         </form>
     )

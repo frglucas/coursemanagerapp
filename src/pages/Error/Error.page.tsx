@@ -1,12 +1,14 @@
 import classNames from 'classnames'
-import './Error.style.scss'
-import { Image } from '../../components/Image/Image.component'
+import { Image } from '../../components'
 import { useNavigate } from 'react-router-dom'
+import { PATH_ROUTES } from '../../constants'
+
+import './Error.style.scss'
 
 export const Error = () => {
     const navigate = useNavigate()
 
-    const handleClickButton = () => navigate('/')
+    const handleClickButton = () => navigate(PATH_ROUTES.SOURCE)
 
     const renderLeft = () => (
         <div className={'error-page__container__left'}>

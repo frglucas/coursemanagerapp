@@ -1,0 +1,109 @@
+.menu-route {
+
+    &__container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &__icon {
+            transform: scale(0.6);
+            fill: var(--whitesmoke);
+            width: 48px;
+            height: 48px;
+        }
+
+        &__span {
+            color: var(--whitesmoke);
+            font-size: 16px;
+            font-weight: 400;
+            width: calc(100% - 48px);
+        }
+
+        &__navlink {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            width: 80%;
+        }
+
+        &__group {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            position: relative;
+
+            &__header {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &__content {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-decoration: none;
+                    width: 80%;
+                    position: relative;
+
+                    &__arrow {
+                        position: absolute;
+                        right: 0;
+
+                        &__selected {
+                            @keyframes rotateArrow {
+                                from { transform: rotate(0deg); }
+                                to { transform: rotate(180deg); }
+                            }
+                            
+                            svg {
+                                fill: var(--whitesmoke);
+                                animation-name: rotateArrow;
+                                animation-duration: 1s;
+                                animation-fill-mode: forwards;
+                            }
+                        }
+                    }
+                }
+
+                &__selected {
+                    box-shadow: rgba(0, 0, 0, 0.16) 0px -5px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+                }
+            }
+
+            &__itens {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                box-shadow: rgba(50, 50, 93, 0.4) 0px -30px 60px -12px inset, rgba(0, 0, 0, 0.4) 0px 18px 36px -18px inset;
+
+                div {
+                    display: none;
+                    opacity: 0;
+                }
+
+                @keyframes openItens {
+                    from { opacity: 0; }
+                    to { opacity: 1; }
+                }
+
+                &__selected {
+                    
+                    div {
+                        display: flex;
+                        animation-name: openItens;
+                        animation-duration: 0.5s;
+                        animation-fill-mode: forwards;
+                    }
+                }
+            }
+        }
+    }
+}

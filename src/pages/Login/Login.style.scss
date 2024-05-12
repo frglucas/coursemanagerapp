@@ -40,3 +40,53 @@
         }
     }
 }
+
+@media (max-width: 810px) {
+    .login-page {
+
+        &__container {
+            position: relative;
+
+            &__left {
+                width: 0;
+                top: 0;
+                left: 0;
+
+                &__icon {
+                    
+                    svg {
+                        position: absolute;
+                        top: 10px;
+                        left: 10px;
+                        scale: 1;
+                    }
+                }
+            }
+
+            &__right {
+                width: 100%;
+                background-color: var(--blue-primary);
+
+                h1 {
+                    color: white;
+                }
+
+                label {
+                    color: white;
+                }
+
+                button {
+                    border: 1px solid white;
+                }
+
+                span {
+                    color: white;
+                }
+
+                a {
+                    color: white;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,115 @@
+.menu-component {
+
+    &__container {
+        width: 100%;
+        height: 100%;
+        background-color: var(--blue-primary);
+
+        @media (max-width: 810px) {
+            position: absolute;
+            width: 300px;
+            height: 100vh;
+            z-index: 998;
+            left: -1500px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        @keyframes openMenuInMobile {
+            from { left: -1500px; }
+            to { left: 0; }
+        }
+
+        &__open {
+            animation-name: openMenuInMobile;
+            animation-duration: 0.2s;
+            animation-fill-mode: forwards;
+        }
+
+        &__button {
+            width: 45px;
+            height: 45px;
+            top: 5px;
+            left: 10px;
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            cursor: pointer;
+
+            &__icon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                svg {
+                    transform: scale(0.9);
+                }
+            }
+
+            &__closed {
+                left: 1510px;
+            }
+        }
+
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            border-width: 1px;
+            border-style: solid;
+            border-image: linear-gradient(to right, var(--blue-primary), var(--whitesmoke), var(--whitesmoke), var(--blue-primary)) 1;
+            border-top: none;
+            border-right: none;
+            border-left: none;
+
+            &__icon {
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                fill: var(--whitesmoke);
+            }
+        }
+
+        &__content {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            flex-direction: column;
+            height: calc(100% - 120px);
+        }
+
+        &__footer {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            height: 60px;
+            border-width: 1px;
+            border-style: solid;
+            border-image: linear-gradient(to right, var(--blue-primary), var(--whitesmoke), var(--whitesmoke), var(--blue-primary)) 1;
+            border-bottom: none;
+            border-right: none;
+            border-left: none;
+
+            span {
+                width: calc(100% - 45px);
+                text-indent: 10px;
+                color: white;
+                padding-top: 5px;
+            }
+
+            &__button {
+                width: 45px;
+                height: 45px;
+                background-color: transparent;
+                border: none;
+
+                &__icon {
+                    transform: scale(0.7);
+                }
+            }
+        }
+    }
+}

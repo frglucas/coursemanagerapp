@@ -6,29 +6,27 @@ type Notification = {
     message: string
 }
 
-const getInstance = () => {
-    const instance = axios.create({
-        baseURL: 'http://localhost:5202/api/v1',
-        headers: { "Content-Type": 'application/json' }
-    })
+export const api : AxiosInstance = axios.create({
+    baseURL: 'http://localhost:5202/api/v1',
+    headers: { "Content-Type": 'application/json' }
+})
 
-    instance.interceptors.response.use(
+export const registerInterceptors = () => {
+    api.interceptors.response.use(
         function (response) {
             return response;
         }, function (error) {
             const { response } = error
             toast.error(response.data.message)
+            console.log(response.data.message)
 
             const notifications: Array<Notification> = response.data.notifications
-            if (notifications.length > 0) {
+            if (notifications?.length > 0) {
+                console.log(notifications)
                 notifications.forEach(notification => toast.error(notification.message))
             }
             
             return Promise.reject(error);
         }
     )
-
-    return instance
 }
-
-export const api: AxiosInstance = getInstance()

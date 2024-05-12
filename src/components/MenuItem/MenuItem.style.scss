@@ -1,0 +1,42 @@
+.menu-item {
+
+    &__container {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        z-index: 999;
+
+        &:hover {
+            svg {
+                fill: var(--whitesmoke);
+                transform: scale(0.7);
+            }
+
+            span {
+                color: var(--whitesmoke);
+                font-size: 16px;
+            }
+        }
+
+        &__icon {
+            width: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            
+            svg {
+                transform: scale(0.6);
+                fill: #A2A2A2;
+            }
+        }
+
+        &__span {
+            width: 60%;
+            color: #A2A2A2;
+            font-size: 15px;
+            font-weight: 400;
+        }
+    }
+} 
