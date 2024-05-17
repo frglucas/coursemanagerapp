@@ -1,3 +1,5 @@
 export * from './api'
 export * from './User/use-get-user.hook'
 export * from './User/use-post-login.hook'
+export * from './Occupation/use-get-all-occupations.hook'
+export * from './Client/use-post-add-client.hook'

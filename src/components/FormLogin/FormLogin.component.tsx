@@ -39,7 +39,7 @@ export const FormLogin = ({ handle }: Props) => {
         <form action="none" className={classNames('form-login-component__container')}>
             <Title name='Login' classname='form-login-component__container__title' />
             <Input label='Email' value={email} onChange={handleChangeEmail} placeholder='example@email.com'/>
-            <Input label='Senha' value={password} onChange={handleChangePassword} type="password" />
+            <Input label='Senha' value={password} onChange={handleChangePassword} type="password" autocomplete={true} />
             <Button name='Entrar' onClick={handleLogin} />
             <span className='form-login-component__container__span'>
                 ou <NavLink to={PATH_ROUTES.LOGIN}>Cadastre-se</NavLink>

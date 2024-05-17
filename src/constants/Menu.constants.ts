@@ -19,7 +19,7 @@ export const MENU_ROUTES: Array<MenuRoute> = [
             },
             {
                 name: 'Adicionar',
-                path: 'clients/add',
+                path: PATH_ROUTES.ADD_CLIENTS,
                 icon: 'ClientAdd'
             },
             {

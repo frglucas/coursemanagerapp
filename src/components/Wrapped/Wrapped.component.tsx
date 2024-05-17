@@ -5,12 +5,15 @@ import './Wrapped.style.scss'
 import { useAuth } from "../../contexts/use-context/useAuth"
 import classNames from "classnames"
 import { Icon } from "../Icon/Icon.component"
+import { useLocation } from "react-router-dom"
 
 type Props = {
     children: ReactNode
 }
 
 export const Wrapped = ({ children }: Props) => {
+    const { pathname } = useLocation()
+
     const [ showMenu, setShowMenu ] = useState<boolean>(true)
     const [ isMobile, setIsMobile ] = useState<boolean>(false)
 
@@ -31,7 +34,8 @@ export const Wrapped = ({ children }: Props) => {
     useEffect(() => {
         window.addEventListener('resize', resizeScreen)
         resizeScreen()
-    }, [])
+        setShowMenu(false)
+    }, [pathname])
 
     const renderHeader = () => (
         <div className="wrapped-component__container__mobile-header">
