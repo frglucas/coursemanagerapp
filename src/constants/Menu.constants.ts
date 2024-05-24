@@ -9,30 +9,8 @@ export const MENU_ROUTES: Array<MenuRoute> = [
     },
     { 
         name: 'Clientes', 
-        path: '', 
-        icon: 'Clients',
-        itens: [
-            {
-                name: 'Consultar',
-                path: 'clients/search',
-                icon: 'ClientSearch'
-            },
-            {
-                name: 'Adicionar',
-                path: PATH_ROUTES.ADD_CLIENTS,
-                icon: 'ClientAdd'
-            },
-            {
-                name: 'Remover',
-                path: 'clients/remove',
-                icon: 'ClientRemove'
-            },
-            {
-                name: 'Editar',
-                path: 'clients/edit',
-                icon: 'ClientEdit'
-            },
-        ] 
+        path: PATH_ROUTES.SEARCH_CLIENTS, 
+        icon: 'Clients'
     },
     { 
         name: 'Cursos', 

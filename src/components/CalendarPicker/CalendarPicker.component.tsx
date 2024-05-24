@@ -2,27 +2,25 @@ import classNames from "classnames";
 import DatePicker from "react-datepicker";
 
 import './CalendarPicker.style.scss';
+import { ChangeEvent } from "react";
+import { addMinutes, format } from "date-fns";
 
 type Props = {
     value: Date,
     label?: string,
-    dateFormat?: string,
-    placeholder?: string,
     classname?: string,
-    onChange: (date: Date) => void
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const CalendarPicker = ({ value, label, dateFormat = 'dd/MM/yyyy', placeholder, classname, onChange }: Props) => {
-
+export const CalendarPicker = ({ value, label, classname, onChange }: Props) => {
     return (
-        <div className={classNames('calendar-picker__container')}>
+        <div className={classNames('calendar-picker__container', classname)}>
             { label && <label>{ label }</label> }
-            <DatePicker
-                selected={value} 
-                dateFormat={dateFormat}
-                placeholderText={placeholder} 
+            <input 
+                type="date"     
+                value={format(addMinutes(new Date(value), (new Date(value).getTimezoneOffset())), 'yyyy-MM-dd')} 
                 className={'calendar-picker__container__calendar'} 
-                onChange={onChange} 
+                onChange={onChange}
             />
         </div>
     )

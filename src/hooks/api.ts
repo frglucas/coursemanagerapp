@@ -19,13 +19,12 @@ export const registerInterceptors = () => {
         }, function (error) {
             const { response } = error
             toast.error(response.data.message)
-            console.log(response.data.message)
 
             const notifications: Array<Notification> = response.data.notifications
             if (notifications?.length > 0) {
                 console.log(notifications)
                 notifications.forEach(notification => toast.error(notification.message))
-            }
+            } else {  }
             
             return Promise.reject(error);
         }

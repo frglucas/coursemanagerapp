@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom"
 import { Wrapped } from "../components"
 import { PATH_ROUTES } from "../constants"
-import { AddClients, Dashboard, Error, Login } from "../pages"
+import { AddClients, Dashboard, Error, Login, SearchClients } from "../pages"
 
 type PageProps = (props: any) => JSX.Element
 
@@ -28,7 +28,8 @@ type RouteTypes = {
 export const ROUTES : RouteTypes = {
     PRIVATE: [
         { path: PATH_ROUTES.DASHBOARD, element: renderPageWithMenu(Dashboard) },
-        { path: PATH_ROUTES.ADD_CLIENTS, element: renderPageWithMenu(AddClients) }
+        { path: PATH_ROUTES.ADD_CLIENTS, element: renderPageWithMenu(AddClients) },
+        { path: PATH_ROUTES.SEARCH_CLIENTS, element: renderPageWithMenu(SearchClients) }
     ],
     PUBLIC: [
         { path: PATH_ROUTES.LOGIN, element: renderPageWithoutMenu(Login) },

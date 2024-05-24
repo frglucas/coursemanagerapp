@@ -1,5 +1,5 @@
 export type AddClientForm = {
-    name: string,
+    fullName: string,
     email: string,
     document: string,
     documentType: number,
@@ -8,4 +8,11 @@ export type AddClientForm = {
     isSmoker: boolean,
     genderType: number,
     genderDetail: string
+}
+
+export type SearchClient = {
+    id: string,
+    name: string,
+    email: string,
+    isActive: boolean
 }

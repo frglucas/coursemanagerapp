@@ -19,6 +19,10 @@ import { default as GroupSearch } from './groupsearch'
 import { default as Signout } from './signout'
 import { default as Menu } from './menu'
 import { default as MenuOpen } from './menuopen'
+import { default as Search } from './search'
+import { default as View } from './view'
+import { default as Edit } from './edit'
+import { default as Remove } from './remove'
 
 export const ICONS = {
     Hat: Hat,
@@ -41,5 +45,9 @@ export const ICONS = {
     GroupSearch: GroupSearch,
     Signout: Signout,
     Menu: Menu,
-    MenuOpen: MenuOpen
+    MenuOpen: MenuOpen,
+    Search: Search,
+    View: View,
+    Edit: Edit,
+    Remove: Remove
 }

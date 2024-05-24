@@ -12,12 +12,13 @@ import './FormAddClient.style.scss';
 import { Button } from "../Button/Button.component"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
+import { addHours, addMinutes, format, parseISO } from "date-fns"
 
 export const FormAddClient = () => {
     const navigate = useNavigate()
 
     // form region
-    const [name, setName] = useState<string>('')
+    const [fullName, setFullName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [document, setDocument] = useState<string>('')
     const [documentType, setDocumentType] = useState<string>(FORM_ADD_CLIENT.RADIO_DOCUMENT_TYPE.DEFAULT)
@@ -52,7 +53,7 @@ export const FormAddClient = () => {
 
     const postAddClient = async () => {
         const form = {
-            name: name,
+            fullName: fullName,
             email: email,
             document: document,
             documentType: (documentType === 'none') ? 0 : parseInt(documentType),
@@ -67,7 +68,7 @@ export const FormAddClient = () => {
             var { data } = await callPostAddClient(form)
 
             console.log(data)
-            navigate(PATH_ROUTES.DASHBOARD)
+            navigate(PATH_ROUTES.SEARCH_CLIENTS)
             toast.success(data.message)
         } catch { }
     }
@@ -77,9 +78,9 @@ export const FormAddClient = () => {
         getAllGenders()
     }, [])
 
-    const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
+    const handleChangeFullName = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault()
-        setName(event.target.value)
+        setFullName(event.target.value)
     }
     
     const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
@@ -94,7 +95,7 @@ export const FormAddClient = () => {
         setDocument(event.target.value)
     }
 
-    const handleChangeBirthDate = (value: Date) => setBirthDate(value)
+    const handleChangeBirthDate = (event: ChangeEvent<HTMLInputElement>) => setBirthDate(new Date(event.target.value))
 
     const handleChangeIsSmoker = (event: ChangeEvent<HTMLInputElement>) => setIsSmoker(event.target.value)
 
@@ -106,7 +107,7 @@ export const FormAddClient = () => {
 
     return (
         <form action="none" className="form-add-client__container">
-            <Input value={name} label="Nome" onChange={handleChangeName} placeholder="ex.: Peter Parker" />
+            <Input value={fullName} label="Nome" onChange={handleChangeFullName} placeholder="ex.: Peter Parker" />
             <Input value={email} label="Email" onChange={handleChangeEmail} placeholder="ex.: peter.parker@mail.com" />
             <div className="form-add-client__container__sides">
                 <div className="form-add-client__container__sides__left">
@@ -124,7 +125,7 @@ export const FormAddClient = () => {
             </div>
             <div className="form-add-client__container__buttons">
                 <Button name="Salvar" onClick={postAddClient} classname="form-add-client__container__buttons__save" />
-                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.DASHBOARD)} classname="form-add-client__container__buttons__cancel" />
+                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.SEARCH_CLIENTS)} classname="form-add-client__container__buttons__cancel" />
             </div>
         </form>
     )
