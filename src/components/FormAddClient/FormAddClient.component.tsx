@@ -5,20 +5,20 @@ import { RadioCheck } from "../RadioCheck/RadioCheck.component"
 import { FORM_ADD_CLIENT, PATH_ROUTES } from "../../constants"
 import { Select } from "../Select/Select.component"
 import { useGetAllOccupations, usePostAddClient } from "../../hooks"
-import { AddClientForm, SelectOption } from "../../models"
+import { SelectOption } from "../../models"
 import { Occupation } from "../../models/Occupation/Occupation.models"
-
-import './FormAddClient.style.scss';
+import { toast } from "react-toastify"
 import { Button } from "../Button/Button.component"
 import { useNavigate } from "react-router-dom"
-import { toast } from "react-toastify"
-import { addHours, addMinutes, format, parseISO } from "date-fns"
+
+import './FormAddClient.style.scss';
 
 export const FormAddClient = () => {
     const navigate = useNavigate()
 
     // form region
     const [fullName, setFullName] = useState<string>('')
+    const [badgeName, setBadgeName] = useState<string>('')
     const [email, setEmail] = useState<string>('')
     const [document, setDocument] = useState<string>('')
     const [documentType, setDocumentType] = useState<string>(FORM_ADD_CLIENT.RADIO_DOCUMENT_TYPE.DEFAULT)
@@ -54,6 +54,7 @@ export const FormAddClient = () => {
     const postAddClient = async () => {
         const form = {
             fullName: fullName,
+            badgeName: badgeName,
             email: email,
             document: document,
             documentType: (documentType === 'none') ? 0 : parseInt(documentType),
@@ -82,6 +83,11 @@ export const FormAddClient = () => {
         event.preventDefault()
         setFullName(event.target.value)
     }
+
+    const handleChangeBadgeName = (event: ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault()
+        setBadgeName(event.target.value)
+    }
     
     const handleChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault()
@@ -107,15 +113,17 @@ export const FormAddClient = () => {
 
     return (
         <form action="none" className="form-add-client__container">
-            <Input value={fullName} label="Nome" onChange={handleChangeFullName} placeholder="ex.: Peter Parker" />
-            <Input value={email} label="Email" onChange={handleChangeEmail} placeholder="ex.: peter.parker@mail.com" />
+            <div className="form-add-client__container__name-content">
+                <Input value={fullName} label="Nome" onChange={handleChangeFullName} placeholder="ex.: José Silva" />
+                <Input value={badgeName} label="Nome no crachá" onChange={handleChangeBadgeName} placeholder="ex.: Zé" />
+            </div>
+            <Input value={email} label="Email" onChange={handleChangeEmail} placeholder="ex.: jose.silva@mail.com" />
             <div className="form-add-client__container__sides">
                 <div className="form-add-client__container__sides__left">
                     <CalendarPicker label="Data de nascimento" value={birthDate} onChange={handleChangeBirthDate} />
                     <Select value={occupation} label="Profissão" options={allOccupations} onChange={handleChangeOccupation} />
                     <Select value={gender} label="Gênero" options={allGenders} onChange={handleChangeGender} />
                     { ( gender === '3' ) && <Input value={genderDetail} label="Especifique" onChange={handleChangeGenderDetail} /> }
-                    
                 </div>
                 <div className="form-add-client__container__sides__right">
                     <RadioCheck selected={documentType} label="Tipo de Documento" options={FORM_ADD_CLIENT.RADIO_DOCUMENT_TYPE.VALUES} onChange={handleChangeDocumentType} />
