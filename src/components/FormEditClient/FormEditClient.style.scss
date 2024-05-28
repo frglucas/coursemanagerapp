@@ -1,0 +1,72 @@
+.form-edit-client {
+
+    &__container {
+        width: 100%;
+        height: max-content;
+
+        &__name-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @media (max-width: 810px) {
+                flex-direction: column;
+            }
+
+            div {
+                width: 48%;
+
+                @media (max-width: 810px) {
+                    width: 100%;
+                }
+
+                div {
+                    width: 100%;
+                }
+            }
+        }
+
+        &__sides {
+            width: 100%;
+            display: flex;
+            align-items: start;
+            justify-content: space-between;
+
+            &__left {
+                width: 48%;
+            }
+
+            &__right {
+                width: 48%;
+            }
+        }
+
+        &__buttons {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            flex-direction: column;
+
+            &__cancel {
+                display: block;
+                width: 100%;
+                height: 50px;
+                
+                button {
+                    border: 1px solid var(--blue-primary);
+                    background-color: transparent;
+                    color: var(--blue-primary);
+                }
+            }
+            
+            &__save {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+                height: 50px;
+            }
+        }
+    }
+}

@@ -53,8 +53,8 @@ export const SearchClients = () => {
                 canView: true,
                 canEdit: isActive,
                 canRemove: isActive,
-                onView: () => console.log(`onView: ${id}`),
-                onEdit: () => console.log(`onEdit: ${id}`),
+                onView: () => navigate(PATH_ROUTES.VIEW_CLIENTS.replace(':id', id)),
+                onEdit: () => navigate(PATH_ROUTES.EDIT_CLIENTS.replace(':id', id)),
                 onRemove: () => deleteClient(id)
             }
         }))
