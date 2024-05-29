@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { SearchTable, Title } from '../../components';
 import './SearchClients.style.scss';
 import { useDeleteClient, useGetAllClientsByTermAndPaged } from '../../hooks';
@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 export const SearchClients = () => {
     const navigate = useNavigate()
 
+    const [term, setTerm] = useState<string>('')
     const [clients, setClients] = useState<Array<SearchClient>>([])
     const [activeOnly, setActiveOnly] = useState<boolean>(true)
     const [page, setPage] = useState<number>(1)
@@ -18,7 +19,7 @@ export const SearchClients = () => {
     const { call: callGetAllClientsByTermAndPaged } = useGetAllClientsByTermAndPaged()
     const { call: callDeleteClient } = useDeleteClient()
 
-    const getAllClients = async (term: string = '') => {
+    const getAllClients = async () => {
         try {
             const { data } = await callGetAllClientsByTermAndPaged(term, activeOnly, page, 7)
 
@@ -46,6 +47,11 @@ export const SearchClients = () => {
         setActiveOnly(lastValue => !lastValue)
     }
 
+    const handleChangeTerm = (event: ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault()
+        setTerm(event.target.value)
+    }
+
     const getClients = (): Array<SearchTableValue> => {
         return clients.map(({ id, name, email, isActive }) => ({
             fields: [(isActive ? name : `${name} (INATIVO)`), email],
@@ -67,11 +73,13 @@ export const SearchClients = () => {
                 headerValues={SEARCH_TABLE_HEADERS.CLIENTS} 
                 bodyValues={getClients()}
                 activeOnly={activeOnly}
+                term={term}
                 page={page}
                 pageCount={pageCount} 
                 onClick={getAllClients} 
                 onChangeActiveOnly={handleChangeActiveOnly}
                 onChangePage={handleChangePage}
+                onChangeTerm={handleChangeTerm}
                 onRedirectAdd={() => navigate(PATH_ROUTES.ADD_CLIENTS)}
             />
         </div>

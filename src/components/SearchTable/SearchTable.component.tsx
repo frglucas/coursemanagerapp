@@ -12,32 +12,24 @@ type Props = {
     headerValues: Array<string>,
     bodyValues: Array<SearchTableValue>,
     classname?: string,
+    term: string,
     pageCount: number,
     page: number,
     activeOnly: boolean,
     onRedirectAdd?: () => void,
-    onClick: (term: string) => void,
+    onClick: () => void,
     onChangeActiveOnly: (event: any) => void,
     onChangePage: (event: ({ selected: number })) => void,
+    onChangeTerm: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const SearchTable = ({ headerValues, bodyValues, activeOnly, pageCount, page, classname, onRedirectAdd,  onClick, onChangeActiveOnly, onChangePage }: Props) => {
-    const [term, setTerm] = useState<string>('')
-
-    const handleChangeTerm = (event: ChangeEvent<HTMLInputElement>) => {
-        event.preventDefault()
-        setTerm(event.target.value)
-    }
-
-    const handleClick = () => {
-        onClick(term)
-    }
+export const SearchTable = ({ headerValues, bodyValues, activeOnly, term, pageCount, page, classname, onRedirectAdd,  onClick, onChangeActiveOnly, onChangePage, onChangeTerm }: Props) => {
 
     const renderHeader = () => (
         <div className='search-table__container__header'>
             <div className='search-table__container__header__search'>
-                <Input value={term} placeholder='Digite algo aqui...' onChange={handleChangeTerm} classname='search-table__container__header__search__input' />
-                <ButtonWithIcon icon='Search' onClick={handleClick} classname='search-table__container__header__search__button' />
+                <Input value={term} placeholder='Digite algo aqui...' onChange={onChangeTerm} classname='search-table__container__header__search__input' />
+                <ButtonWithIcon icon='Search' onClick={onClick} classname='search-table__container__header__search__button' />
             </div>
             <div className='search-table__container__header__options'>
                 <Checkbox checked={activeOnly} label='Apenas ativos' onChange={onChangeActiveOnly} classname='search-table__container__header__options__checkbox' />

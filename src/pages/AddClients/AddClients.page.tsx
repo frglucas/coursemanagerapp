@@ -1,7 +1,7 @@
 import classNames from "classnames"
+import { FormAddClient, Title } from "../../components"
 
 import './AddClients.style.scss'
-import { FormAddClient, Title } from "../../components"
 
 export const AddClients = () => {
 

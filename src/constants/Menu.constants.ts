@@ -14,30 +14,8 @@ export const MENU_ROUTES: Array<MenuRoute> = [
     },
     { 
         name: 'Cursos', 
-        path: '', 
-        icon: 'Bookmark',
-        itens: [
-            {
-                name: 'Consultar',
-                path: 'courses/search',
-                icon: 'BookmarkSearch'
-            },
-            {
-                name: 'Adicionar',
-                path: 'courses/add',
-                icon: 'BookmarkAdd'
-            },
-            {
-                name: 'Remover',
-                path: 'courses/remove',
-                icon: 'BookmarkRemove'
-            },
-            {
-                name: 'Editar',
-                path: 'courses/edit',
-                icon: 'BookmarkEdit'
-            },
-        ] 
+        path: PATH_ROUTES.SEARCH_COURSES, 
+        icon: 'Bookmark' 
     },
     { 
         name: 'Turmas', 

@@ -1,3 +1,4 @@
 export const SEARCH_TABLE_HEADERS = {
-    CLIENTS: ['Nome', 'Email']
+    CLIENTS: ['Nome', 'Email'],
+    COURSES: ['Nome']
 }
