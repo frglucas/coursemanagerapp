@@ -64,7 +64,7 @@ export const SearchTable = ({ headerValues, bodyValues, activeOnly, term, pageCo
         <tbody className='search-table__container__table__body'>
             { 
                 bodyValues.map(({ fields, actions: { canView, canEdit, canRemove, onView, onEdit, onRemove } }, index) => (
-                    <tr key={`tr-${index}`}>
+                    <tr key={`tr-${index}`} className={classNames({ 'background-trans__blue': ((index % 2) !== 0)})}>
                         { fields.map((value, index) => <td key={`td-${index}-${value}`}>{value}</td>) }
                         <td className='search-table__container__table__body__actions'>
                             { renderView(!canView, onView) }

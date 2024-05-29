@@ -85,7 +85,7 @@ export const FormViewClient = ({ id }: Props) => {
 
         toast.success(data.message)
         getClient()
-}
+    }
 
     return (
         <div className={classNames('form-view-client__container')}>

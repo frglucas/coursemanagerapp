@@ -140,6 +140,9 @@
                     height: 50px;
 
                     &__view {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         margin-bottom: 0 !important;
                         
                         button {
@@ -155,6 +158,9 @@
                     }
                     
                     &__edit {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         margin-bottom: 0 !important;
                         
                         button {
@@ -170,6 +176,9 @@
                     }
 
                     &__remove {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
                         margin-bottom: 0 !important;
                         margin-right: 5px;
                         
@@ -215,4 +224,11 @@
 .th-center {
     position: inherit;
     text-align: center;
+}
+
+.background-trans {
+
+    &__blue {
+        background-color: var(--blue-primary-100);
+    }
 }
