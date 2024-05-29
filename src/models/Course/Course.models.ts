@@ -3,6 +3,12 @@ export type AddCourseForm = {
     description: string
 }
 
+export type EditCourseForm = {
+    courseId: string,
+    name: string,
+    description: string
+}
+
 export type SearchCourse = {
     id: string,
     name: string,

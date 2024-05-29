@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { SearchTable, Title } from '../../components';
 import './SearchClients.style.scss';
 import { useDeleteClient, useGetAllClientsByTermAndPaged } from '../../hooks';
-import { SearchClient, SearchTableAction, SearchTableValue } from '../../models';
+import { SearchClient, SearchTableValue } from '../../models';
 import { PATH_ROUTES, SEARCH_TABLE_HEADERS } from '../../constants';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';

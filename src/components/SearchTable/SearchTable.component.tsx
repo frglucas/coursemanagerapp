@@ -1,12 +1,13 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import { Input } from '../Input/Input.component';
-import './SearchTable.style.scss';
 import classNames from 'classnames';
 import { ButtonWithIcon } from '../ButtonWithIcon/ButtonWithIcon.component';
 import ReactPaginate from 'react-paginate';
 import { SearchTableValue } from '../../models';
 import { Button } from '../Button/Button.component';
 import { Checkbox } from '../Checkbox/Checkbox.component';
+
+import './SearchTable.style.scss';
 
 type Props = {
     headerValues: Array<string>,

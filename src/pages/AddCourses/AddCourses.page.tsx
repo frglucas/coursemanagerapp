@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { FormAddCourse, Title } from '../../components';
 
-import './AddCourse.style.scss';
+import './AddCourses.style.scss';
 
 export const AddCourse = () => {
     
