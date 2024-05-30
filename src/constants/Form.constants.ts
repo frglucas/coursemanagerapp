@@ -22,3 +22,13 @@ export const FORM_ADD_CLIENT = {
         ]
     }
 }
+
+export const FORM_ADD_CLASS = {
+    RADIO_IS_ONLINE: {
+        DEFAULT: 'false',
+        VALUES: [
+            { label: 'Presencial', value: 'false'}, 
+            { label: 'Online', value: 'true' }
+        ]
+    }
+}

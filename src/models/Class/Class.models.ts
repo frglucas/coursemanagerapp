@@ -5,3 +5,12 @@ export type SearchClass = {
     scheduleDate: Date,
     isOnline: boolean
 }
+
+export type AddClassForm = {
+    courseId: string,
+    ministerId: string,
+    name: string,
+    addressOrLink: string,
+    scheduledDate: Date,
+    isOnline: boolean
+}

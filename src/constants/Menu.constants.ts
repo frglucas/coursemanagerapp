@@ -3,7 +3,7 @@ import { PATH_ROUTES } from "./Path.contants";
 
 export const MENU_ROUTES: Array<MenuRoute> = [
     { 
-        name: 'Dashboard', 
+        name: 'Menu', 
         path: PATH_ROUTES.DASHBOARD, 
         icon: 'Dashboard' 
     },

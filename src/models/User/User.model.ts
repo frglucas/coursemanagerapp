@@ -5,3 +5,9 @@ export type User = {
     tenantId: string,
     roles: Array<string>
 }
+
+export type UserToAddClass = {
+    id: string,
+    name: string,
+    email: string
+}

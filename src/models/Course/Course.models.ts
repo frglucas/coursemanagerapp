@@ -15,3 +15,8 @@ export type SearchCourse = {
     description: string,
     isActive: boolean
 }
+
+export type CourseToAddClass = {
+    id: string,
+    name: string
+}
