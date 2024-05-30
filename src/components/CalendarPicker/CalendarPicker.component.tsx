@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import DatePicker from "react-datepicker";
 
 import './CalendarPicker.style.scss';
 import { ChangeEvent } from "react";
