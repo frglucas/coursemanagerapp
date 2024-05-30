@@ -9,5 +9,8 @@ export type SearchTableAction = {
     canRemove: boolean,
     onView: () => void,
     onEdit: () => void,
-    onRemove: () => void
+    onRemove: () => void,
+    canRenderView: boolean,
+    canRenderEdit: boolean,
+    canRenderRemove: boolean
 }

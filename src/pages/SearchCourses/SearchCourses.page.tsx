@@ -62,7 +62,10 @@ export const SearchCourses = () => {
                 canRemove: isActive,
                 onView: () => navigate(PATH_ROUTES.VIEW_COURSES.replace(':id', id)),
                 onEdit: () => navigate(PATH_ROUTES.EDIT_COURSES.replace(':id', id)),
-                onRemove: () => deleteCourse(id)
+                onRemove: () => deleteCourse(id),
+                canRenderView: true,
+                canRenderEdit: true,
+                canRenderRemove: true
             }
         }))
     }

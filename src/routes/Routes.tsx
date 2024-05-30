@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom"
 import { Wrapped } from "../components"
 import { PATH_ROUTES } from "../constants"
-import { AddClients, AddCourse, Dashboard, EditClients, EditCourses, Error, Login, SearchClients, SearchCourses, ViewClients, ViewCourses } from "../pages"
+import { AddClients, AddCourse, Dashboard, EditClients, EditCourses, Error, Login, SearchClasses, SearchClients, SearchCourses, ViewClients, ViewCourses } from "../pages"
 
 type PageProps = (props: any) => JSX.Element
 
@@ -36,6 +36,7 @@ export const ROUTES : RouteTypes = {
         { path: PATH_ROUTES.EDIT_COURSES, element: renderPageWithMenu(EditCourses) },
         { path: PATH_ROUTES.VIEW_COURSES, element: renderPageWithMenu(ViewCourses) },
         { path: PATH_ROUTES.SEARCH_COURSES, element: renderPageWithMenu(SearchCourses) },
+        { path: PATH_ROUTES.SEARCH_CLASSES, element: renderPageWithMenu(SearchClasses) },
     ],
     PUBLIC: [
         { path: PATH_ROUTES.LOGIN, element: renderPageWithoutMenu(Login) },

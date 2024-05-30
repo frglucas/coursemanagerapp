@@ -16,15 +16,15 @@ type Props = {
     term: string,
     pageCount: number,
     page: number,
-    activeOnly: boolean,
+    activeOnly?: boolean,
     onRedirectAdd?: () => void,
     onClick: () => void,
-    onChangeActiveOnly: (event: any) => void,
+    onChangeActiveOnly?: (event: any) => void,
     onChangePage: (event: ({ selected: number })) => void,
     onChangeTerm: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const SearchTable = ({ headerValues, bodyValues, activeOnly, term, pageCount, page, classname, onRedirectAdd,  onClick, onChangeActiveOnly, onChangePage, onChangeTerm }: Props) => {
+export const SearchTable = ({ headerValues, bodyValues, activeOnly = false, term, pageCount, page, classname, onRedirectAdd,  onClick, onChangeActiveOnly, onChangePage, onChangeTerm }: Props) => {
 
     const renderHeader = () => (
         <div className='search-table__container__header'>
@@ -33,7 +33,7 @@ export const SearchTable = ({ headerValues, bodyValues, activeOnly, term, pageCo
                 <ButtonWithIcon icon='Search' onClick={onClick} classname='search-table__container__header__search__button' />
             </div>
             <div className='search-table__container__header__options'>
-                <Checkbox checked={activeOnly} label='Apenas ativos' onChange={onChangeActiveOnly} classname='search-table__container__header__options__checkbox' />
+                { !!onChangeActiveOnly && <Checkbox checked={activeOnly} label='Apenas ativos' onChange={onChangeActiveOnly} classname='search-table__container__header__options__checkbox' /> }
                 { !!onRedirectAdd && <Button name='Adicionar' classname='search-table__container__header__options__button-add' onClick={onRedirectAdd} /> }
             </div>
         </div>
@@ -63,13 +63,13 @@ export const SearchTable = ({ headerValues, bodyValues, activeOnly, term, pageCo
     const renderTableBody = () => (
         <tbody className='search-table__container__table__body'>
             { 
-                bodyValues.map(({ fields, actions: { canView, canEdit, canRemove, onView, onEdit, onRemove } }, index) => (
+                bodyValues.map(({ fields, actions: { canView, canEdit, canRemove, onView, onEdit, onRemove, canRenderView, canRenderEdit, canRenderRemove } }, index) => (
                     <tr key={`tr-${index}`} className={classNames({ 'background-trans__blue': ((index % 2) !== 0)})}>
                         { fields.map((value, index) => <td key={`td-${index}-${value}`}>{value}</td>) }
                         <td className='search-table__container__table__body__actions'>
-                            { renderView(!canView, onView) }
-                            { renderEdit(!canEdit, onEdit) }
-                            { renderRemove(!canRemove, onRemove) }
+                            {  canRenderView && renderView(!canView, onView) }
+                            {  canRenderEdit && renderEdit(!canEdit, onEdit) }
+                            {  canRenderRemove && renderRemove(!canRemove, onRemove) }
                         </td>
                     </tr>
                 )) 

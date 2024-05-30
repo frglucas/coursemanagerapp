@@ -61,7 +61,10 @@ export const SearchClients = () => {
                 canRemove: isActive,
                 onView: () => navigate(PATH_ROUTES.VIEW_CLIENTS.replace(':id', id)),
                 onEdit: () => navigate(PATH_ROUTES.EDIT_CLIENTS.replace(':id', id)),
-                onRemove: () => deleteClient(id)
+                onRemove: () => deleteClient(id),
+                canRenderView: true,
+                canRenderEdit: true,
+                canRenderRemove: true
             }
         }))
     }

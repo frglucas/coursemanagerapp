@@ -19,29 +19,7 @@ export const MENU_ROUTES: Array<MenuRoute> = [
     },
     { 
         name: 'Turmas', 
-        path: '', 
-        icon: 'Group',
-        itens: [
-            {
-                name: 'Consultar',
-                path: 'classes/search',
-                icon: 'GroupSearch'
-            },
-            {
-                name: 'Adicionar',
-                path: 'classes/add',
-                icon: 'GroupAdd'
-            },
-            {
-                name: 'Remover',
-                path: 'classes/remove',
-                icon: 'GroupRemove'
-            },
-            {
-                name: 'Editar',
-                path: 'classes/edit',
-                icon: 'GroupEdit'
-            },
-        ] 
+        path: PATH_ROUTES.SEARCH_CLASSES, 
+        icon: 'Group'
     },
 ]

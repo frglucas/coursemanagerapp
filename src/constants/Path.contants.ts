@@ -10,6 +10,10 @@ export const PATH_ROUTES = {
     EDIT_COURSES: '/courses/edit/:id',
     VIEW_COURSES: '/courses/view/:id',
     SEARCH_COURSES: '/courses/search',
+    ADD_CLASSES: '/classes/add',
+    VIEW_CLASSES: '/classes/view/:id',
+    EDIT_CLASSES: '/classes/edit/:id',
+    SEARCH_CLASSES: '/classes/search',
     ERROR: '/error',
     OTHERS: '*'
 }
