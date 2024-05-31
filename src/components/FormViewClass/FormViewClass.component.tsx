@@ -5,7 +5,7 @@ import { FORM_ADD_CLASS, PATH_ROUTES } from '../../constants';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ReadOnly } from '../ReadOnly/ReadOnly.component';
-import { CourseToAddClass, UserToAddClass } from '../../models';
+import { CourseBasic, UserBasic } from '../../models';
 import { useGetAllCourses, useGetAllUsers, useGetClassById } from '../../hooks';
 import { format } from 'date-fns';
 
@@ -24,8 +24,8 @@ export const FormViewClass = ({ id }: Props) => {
     const [scheduledDate, setScheduledDate] = useState<Date>(new Date())
     const [isOnline, setIsOnline] = useState<string>(FORM_ADD_CLASS.RADIO_IS_ONLINE.DEFAULT)
 
-    const [allCourses, setAllCourses] = useState<Array<CourseToAddClass>>([])
-    const [allUsers, setAllUsers] = useState<Array<UserToAddClass>>([])
+    const [allCourses, setAllCourses] = useState<Array<CourseBasic>>([])
+    const [allUsers, setAllUsers] = useState<Array<UserBasic>>([])
 
     const { call: callGetAllCourses } = useGetAllCourses()
     const { call: callGetAllUsers } = useGetAllUsers()
@@ -34,7 +34,7 @@ export const FormViewClass = ({ id }: Props) => {
     const getAllCourses = async () => {
         var { data } = await callGetAllCourses()
 
-        var courses : Array<CourseToAddClass> = data.data
+        var courses : Array<CourseBasic> = data.data
 
         setAllCourses(courses)
     }
@@ -42,7 +42,7 @@ export const FormViewClass = ({ id }: Props) => {
     const getAllUsers = async () => {
         var { data } = await callGetAllUsers()
 
-        var users : Array<UserToAddClass> = data.data
+        var users : Array<UserBasic> = data.data
 
         setAllUsers(users)
     }
@@ -58,7 +58,6 @@ export const FormViewClass = ({ id }: Props) => {
             setAddressOrLink(data.addressOrLink)
             setScheduledDate(data.scheduledDate)
             setIsOnline(data.isOnline)
-            console.log(data)
         } catch { }
     }
 
@@ -75,7 +74,7 @@ export const FormViewClass = ({ id }: Props) => {
             <ReadOnly label="Local ou Link" value={addressOrLink} />
             <ReadOnly label="Data do encontro" value={format(scheduledDate, 'dd/MM/yyyy')} />
             <ReadOnly label="Ministrante" value={allUsers.map(({ id, name, email }) => ({ id: id, name: `${name} (${email})` })).find(x => x.id === ministerId)?.name ?? ''} />
-            {/* <RadioCheck selected={isOnline} label='Modalidade' options={FORM_ADD_CLASS.RADIO_IS_ONLINE.VALUES} onChange={handleChangeIsOnline} /> */}
+            <ReadOnly label='Modalidade' value={isOnline ? 'Online' : 'Presencial'} />
             <div className='form-view-class__container__buttons'>
                 <Button name='Editar' onClick={() => navigate(PATH_ROUTES.EDIT_CLASSES.replace(':id', classId))} classname='form-view-class__container__buttons__edit' />
                 <Button name='Voltar' onClick={() => navigate(PATH_ROUTES.SEARCH_CLASSES)} classname='form-view-class__container__buttons__back' />

@@ -6,7 +6,7 @@ export type User = {
     roles: Array<string>
 }
 
-export type UserToAddClass = {
+export type UserBasic = {
     id: string,
     name: string,
     email: string

@@ -1,22 +1,23 @@
-import { ChangeEvent, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { Select } from "../Select/Select.component"
+import { Input } from "../Input/Input.component"
+import { CalendarPicker } from "../CalendarPicker/CalendarPicker.component"
+import { RadioCheck } from "../RadioCheck/RadioCheck.component"
 import { Button } from "../Button/Button.component"
 import { FORM_ADD_CLASS, PATH_ROUTES } from "../../constants"
-import { useNavigate } from "react-router-dom"
-import { Select } from "../Select/Select.component";
-import { Input } from "../Input/Input.component";
-import { CalendarPicker } from "../CalendarPicker/CalendarPicker.component";
-import { RadioCheck } from "../RadioCheck/RadioCheck.component";
+import { ChangeEvent, useEffect, useState } from "react"
+import { CourseBasic, EditClassForm, SelectOption, UserBasic } from "../../models"
+import { useGetAllCourses, useGetAllUsers, useGetClassById, usePutEditClass } from "../../hooks"
+import { toast } from "react-toastify"
 
-import './FormAddClass.style.scss';
-import { useGetAllCourses } from "../../hooks/Course/use-get-all-courses.hook";
-import { CourseBasic, SelectOption, UserBasic } from "../../models";
-import { useGetAllUsers } from "../../hooks";
-import { usePostAddClass } from "../../hooks/Class/use-post-add-class.hook";
-import { toast } from "react-toastify";
+type Props = {
+    id: string
+}
 
-export const FormAddClass = () => {
+export const FormEditClass = ({ id }: Props) => {
     const navigate = useNavigate()
 
+    const [classId, setClassId] = useState<string>(id)
     const [name, setName] = useState<string>('')
     const [courseId, setCourseId] = useState<string>('none')
     const [ministerId, setMinisterId] = useState<string>('none')
@@ -29,7 +30,8 @@ export const FormAddClass = () => {
 
     const { call: callGetAllCourses } = useGetAllCourses()
     const { call: callGetAllUsers } = useGetAllUsers()
-    const { call: callPostAddClass } = usePostAddClass()
+    const { call: callGetClass } = useGetClassById()
+    const { call: callPutEditClass } = usePutEditClass()
 
     const getAllCourses = async () => {
         var { data } = await callGetAllCourses()
@@ -51,27 +53,42 @@ export const FormAddClass = () => {
         setAllUsers(values)
     }
 
-    const postAddClass = async () => {
-        const form = {
+    const getClass = async () => {
+        try {
+            const { data: { data } } = await callGetClass(id)
+            
+            setClassId(data.id)
+            setName(data.name)
+            setCourseId(data.courseId)
+            setMinisterId(data.ministerId)
+            setAddressOrLink(data.addressOrLink)
+            setScheduledDate(data.scheduledDate)
+            setIsOnline(`${data.isOnline}`)
+        } catch { }
+    }
+
+    const putEditClass = async () => {
+        const form : EditClassForm = {
+            classId: classId,
             courseId: (courseId === 'none') ? '' : courseId,
             ministerId: (ministerId === 'none') ? '' : ministerId,
             name: name,
-            addressOrLink: addressOrLink,
             scheduledDate: scheduledDate,
+            addressOrLink: addressOrLink,
             isOnline: (isOnline === 'true')
         }
 
         try {
-            var { data } = await callPostAddClass(form)
-
-            navigate(PATH_ROUTES.SEARCH_CLASSES)
+            const { data } = await callPutEditClass(form)
             toast.success(data.message)
+            navigate(PATH_ROUTES.SEARCH_CLASSES)
         } catch { }
     }
 
     useEffect(() => {
         getAllCourses()
         getAllUsers()
+        getClass()
     }, [])
 
     const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
@@ -92,6 +109,7 @@ export const FormAddClass = () => {
 
     const handleChangeIsOnline = (event: ChangeEvent<HTMLInputElement>) => setIsOnline(event.target.value)
 
+
     return (
         <form action="none" className="form-add-class__container">
             <Select value={courseId} label="Curso" options={allCourses} onChange={handleChangeCourse} />
@@ -101,7 +119,7 @@ export const FormAddClass = () => {
             <Select value={ministerId} label="Ministrante" options={allUsers} onChange={handleChangeMinister} classname="form-add-class__container__select-minister" />
             <RadioCheck selected={isOnline} label='Modalidade' options={FORM_ADD_CLASS.RADIO_IS_ONLINE.VALUES} onChange={handleChangeIsOnline} />
             <div className="form-add-class__container__buttons">
-                <Button name="Salvar" onClick={postAddClass} classname="form-add-class__container__buttons__save" />
+                <Button name="Salvar" onClick={putEditClass} classname="form-add-class__container__buttons__save" />
                 <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.SEARCH_CLASSES)} classname="form-add-class__container__buttons__cancel" />
             </div>
         </form>

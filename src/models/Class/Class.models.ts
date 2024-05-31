@@ -14,3 +14,13 @@ export type AddClassForm = {
     scheduledDate: Date,
     isOnline: boolean
 }
+
+export type EditClassForm = {
+    classId: string,
+    courseId: string,
+    ministerId: string,
+    name: string,
+    scheduledDate: Date,
+    addressOrLink: string,
+    isOnline: boolean
+}
