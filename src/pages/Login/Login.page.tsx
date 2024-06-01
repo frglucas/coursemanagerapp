@@ -19,6 +19,7 @@ export const Login = () => {
             navigate(PATH_ROUTES.DASHBOARD)
             return;
         }
+        console.log(process.env)
     }, [navigate])
 
     const handleLogin = async (form: LoginForm) => {
