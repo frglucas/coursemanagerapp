@@ -60,8 +60,8 @@ export const SearchCourses = () => {
                 canView: true,
                 canEdit: isActive,
                 canRemove: isActive,
-                onView: () => navigate(PATH_ROUTES.VIEW_COURSES.replace(':id', id)),
-                onEdit: () => navigate(PATH_ROUTES.EDIT_COURSES.replace(':id', id)),
+                onView: () => navigate(PATH_ROUTES.PRIVATE.VIEW_COURSES.replace(':id', id)),
+                onEdit: () => navigate(PATH_ROUTES.PRIVATE.EDIT_COURSES.replace(':id', id)),
                 onRemove: () => deleteCourse(id),
                 canRenderView: true,
                 canRenderEdit: true,
@@ -84,7 +84,7 @@ export const SearchCourses = () => {
                 onChangeActiveOnly={handleChangeActiveOnly}
                 onChangePage={handleChangePage}
                 onChangeTerm={handleChangeTerm}
-                onRedirectAdd={() => navigate(PATH_ROUTES.ADD_COURSES)}
+                onRedirectAdd={() => navigate(PATH_ROUTES.PRIVATE.ADD_COURSES)}
             />
         </div>
     )

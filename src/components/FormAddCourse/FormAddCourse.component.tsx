@@ -27,7 +27,7 @@ export const FormAddCourse = () => {
         try {
             var { data } = await callPostAddCourse(form)
 
-            navigate(PATH_ROUTES.SEARCH_COURSES)
+            navigate(PATH_ROUTES.PRIVATE.SEARCH_COURSES)
             toast.success(data.message)
         } catch { }
     }
@@ -48,7 +48,7 @@ export const FormAddCourse = () => {
             <Textarea value={description} label='Descrição' onChange={handleChangeDescription} placeholder={DESCRIPTION_PLACEHOLDER} />
             <div className="form-add-course__container__buttons">
                 <Button name="Salvar" onClick={postAddCourse} classname="form-add-course__container__buttons__save" />
-                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.SEARCH_COURSES)} classname="form-add-course__container__buttons__cancel" />
+                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_COURSES)} classname="form-add-course__container__buttons__cancel" />
             </div>
         </form>
     )

@@ -42,7 +42,7 @@ export const FormLogin = ({ handle }: Props) => {
             <Input label='Senha' value={password} onChange={handleChangePassword} type="password" autocomplete={true} />
             <Button name='Entrar' onClick={handleLogin} />
             <span className='form-login-component__container__span'>
-                ou <NavLink to={PATH_ROUTES.LOGIN}>Cadastre-se</NavLink>
+                ou <NavLink to={PATH_ROUTES.PUBLIC.REGISTER}>Cadastre-se</NavLink>
             </span>
         </form>
     )

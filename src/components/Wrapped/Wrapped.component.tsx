@@ -1,11 +1,10 @@
 import { ReactNode, useEffect, useState } from "react"
 import { Menu } from "../Menu/Menu.component"
-
-import './Wrapped.style.scss'
-import { useAuth } from "../../contexts/use-context/useAuth"
 import classNames from "classnames"
 import { Icon } from "../Icon/Icon.component"
 import { useLocation } from "react-router-dom"
+
+import './Wrapped.style.scss'
 
 type Props = {
     children: ReactNode

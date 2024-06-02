@@ -81,7 +81,7 @@ export const FormEditClass = ({ id }: Props) => {
         try {
             const { data } = await callPutEditClass(form)
             toast.success(data.message)
-            navigate(PATH_ROUTES.SEARCH_CLASSES)
+            navigate(PATH_ROUTES.PRIVATE.SEARCH_CLASSES)
         } catch { }
     }
 
@@ -120,7 +120,7 @@ export const FormEditClass = ({ id }: Props) => {
             <RadioCheck selected={isOnline} label='Modalidade' options={FORM_ADD_CLASS.RADIO_IS_ONLINE.VALUES} onChange={handleChangeIsOnline} />
             <div className="form-add-class__container__buttons">
                 <Button name="Salvar" onClick={putEditClass} classname="form-add-class__container__buttons__save" />
-                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.SEARCH_CLASSES)} classname="form-add-class__container__buttons__cancel" />
+                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_CLASSES)} classname="form-add-class__container__buttons__cancel" />
             </div>
         </form>
     )

@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useCallback, useEffect, useMemo, useState } from "react"
 import { LoginForm, User, AuthDataContext } from "../models"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 import { usePostLogin, api, useGetUser } from "../hooks"
 import { PATH_ROUTES } from "../constants"
 
@@ -11,6 +11,7 @@ type Props = {
 export const AuthContext = createContext<AuthDataContext>({} as AuthDataContext)
 
 export const AuthProvider = ({ children }: Props) => {
+    const location = useLocation()
     const [user, setUser] = useState<User | null>(null)
     const [token, setToken] = useState<string | null>(sessionStorage.getItem('token'))
     const navigate = useNavigate()
@@ -66,7 +67,7 @@ export const AuthProvider = ({ children }: Props) => {
                 
                 api.defaults.headers.common['Authorization'] = `Bearer ${newToken}`
 
-                navigate(PATH_ROUTES.DASHBOARD);
+                navigate(PATH_ROUTES.PRIVATE.DASHBOARD);
                 
                 return;
             }
@@ -82,7 +83,11 @@ export const AuthProvider = ({ children }: Props) => {
         sessionStorage.removeItem("user");
         setUser(null);
         setToken(null);
-        navigate("/login", { state: { isSignOut: true } });
+        
+        const test = Object.values(PATH_ROUTES.PUBLIC).filter(x => x === location.pathname)
+        
+        if (test.length === 1) navigate(location.pathname, { state: { isSignOut: true } })
+        else navigate("/login", { state: { isSignOut: true } });
     }, [navigate])
 
     useEffect(() => {

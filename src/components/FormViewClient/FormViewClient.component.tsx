@@ -109,9 +109,9 @@ export const FormViewClient = ({ id }: Props) => {
                 </div>
             </div>
             <div className='form-view-client__container__buttons'>
-                <Button name='Editar' disabled={!isActive} onClick={() => navigate(PATH_ROUTES.EDIT_CLIENTS.replace(':id', clientId))} classname='form-view-client__container__buttons__edit' />
+                <Button name='Editar' disabled={!isActive} onClick={() => navigate(PATH_ROUTES.PRIVATE.EDIT_CLIENTS.replace(':id', clientId))} classname='form-view-client__container__buttons__edit' />
                 <Button name='Inativar' disabled={!isActive} onClick={deleteClient} classname='form-view-client__container__buttons__remove' />
-                <Button name='Voltar' onClick={() => navigate(PATH_ROUTES.SEARCH_CLIENTS)} classname='form-view-client__container__buttons__back' />
+                <Button name='Voltar' onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_CLIENTS)} classname='form-view-client__container__buttons__back' />
             </div>
         </div>
     )

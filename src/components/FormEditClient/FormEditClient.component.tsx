@@ -97,7 +97,7 @@ export const FormEditClient = ({ id }: Props) => {
         try {
             const { data } = await callPutEditClient(form)
             toast.success(data.message)
-            navigate(PATH_ROUTES.SEARCH_CLIENTS)
+            navigate(PATH_ROUTES.PRIVATE.SEARCH_CLIENTS)
         } catch { }
     }
 
@@ -156,7 +156,7 @@ export const FormEditClient = ({ id }: Props) => {
             </div>
             <div className="form-edit-client__container__buttons">
                 <Button name="Salvar" onClick={putEditClient} classname="form-edit-client__container__buttons__save" />
-                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.SEARCH_CLIENTS)} classname="form-edit-client__container__buttons__cancel" />
+                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_CLIENTS)} classname="form-edit-client__container__buttons__cancel" />
             </div>
         </form>
     )

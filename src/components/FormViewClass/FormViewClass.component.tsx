@@ -76,8 +76,8 @@ export const FormViewClass = ({ id }: Props) => {
             <ReadOnly label="Ministrante" value={allUsers.map(({ id, name, email }) => ({ id: id, name: `${name} (${email})` })).find(x => x.id === ministerId)?.name ?? ''} />
             <ReadOnly label='Modalidade' value={isOnline ? 'Online' : 'Presencial'} />
             <div className='form-view-class__container__buttons'>
-                <Button name='Editar' onClick={() => navigate(PATH_ROUTES.EDIT_CLASSES.replace(':id', classId))} classname='form-view-class__container__buttons__edit' />
-                <Button name='Voltar' onClick={() => navigate(PATH_ROUTES.SEARCH_CLASSES)} classname='form-view-class__container__buttons__back' />
+                <Button name='Editar' onClick={() => navigate(PATH_ROUTES.PRIVATE.EDIT_CLASSES.replace(':id', classId))} classname='form-view-class__container__buttons__edit' />
+                <Button name='Voltar' onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_CLASSES)} classname='form-view-class__container__buttons__back' />
             </div>
         </div>
     )

@@ -64,7 +64,7 @@ export const FormAddClass = () => {
         try {
             var { data } = await callPostAddClass(form)
 
-            navigate(PATH_ROUTES.SEARCH_CLASSES)
+            navigate(PATH_ROUTES.PRIVATE.SEARCH_CLASSES)
             toast.success(data.message)
         } catch { }
     }
@@ -102,7 +102,7 @@ export const FormAddClass = () => {
             <RadioCheck selected={isOnline} label='Modalidade' options={FORM_ADD_CLASS.RADIO_IS_ONLINE.VALUES} onChange={handleChangeIsOnline} />
             <div className="form-add-class__container__buttons">
                 <Button name="Salvar" onClick={postAddClass} classname="form-add-class__container__buttons__save" />
-                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.SEARCH_CLASSES)} classname="form-add-class__container__buttons__cancel" />
+                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_CLASSES)} classname="form-add-class__container__buttons__cancel" />
             </div>
         </form>
     )

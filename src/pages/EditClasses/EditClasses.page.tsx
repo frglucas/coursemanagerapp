@@ -8,7 +8,7 @@ import { FormEditClass, Title } from '../../components';
 export const EditClasses = () => {
     const location = useLocation()
 
-    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.EDIT_CLASSES.replace(':id', ''), ''))
+    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.PRIVATE.EDIT_CLASSES.replace(':id', ''), ''))
 
     return (
         <div className={classNames('edit-classes__container')}>

@@ -53,9 +53,9 @@ export const FormViewCourse = ({ id }: Props) => {
             <ReadOnly value={description} label="Descrição" />
             <ReadOnly value={isActive ? 'Sim' : 'Não'} label="Ativo" />
             <div className='form-view-course__container__buttons'>
-                <Button name='Editar' disabled={!isActive} onClick={() => navigate(PATH_ROUTES.EDIT_COURSES.replace(':id', courseId))} classname='form-view-client__container__buttons__edit' />
+                <Button name='Editar' disabled={!isActive} onClick={() => navigate(PATH_ROUTES.PRIVATE.EDIT_COURSES.replace(':id', courseId))} classname='form-view-client__container__buttons__edit' />
                 <Button name='Inativar' disabled={!isActive} onClick={deleteCourse} classname='form-view-client__container__buttons__remove' />
-                <Button name='Voltar' onClick={() => navigate(PATH_ROUTES.SEARCH_COURSES)} classname='form-view-client__container__buttons__back' />
+                <Button name='Voltar' onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_COURSES)} classname='form-view-client__container__buttons__back' />
             </div>
         </div>
     )

@@ -9,7 +9,7 @@ import './ViewClasses.style.scss';
 export const ViewClasses = () => {
     const location = useLocation()
 
-    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.VIEW_CLASSES.replace(':id', ''), ''))
+    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.PRIVATE.VIEW_CLASSES.replace(':id', ''), ''))
 
     return (
         <div className={classNames('view-classes__container')}>

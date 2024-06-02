@@ -9,7 +9,7 @@ import './EditClients.style.scss';
 export const EditClients = () => {
     const location = useLocation()
 
-    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.EDIT_CLIENTS.replace(':id', ''), ''))
+    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.PRIVATE.EDIT_CLIENTS.replace(':id', ''), ''))
 
     return (
         <div className={classNames('edit-clients__container')}>

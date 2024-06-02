@@ -59,8 +59,8 @@ export const SearchClients = () => {
                 canView: true,
                 canEdit: isActive,
                 canRemove: isActive,
-                onView: () => navigate(PATH_ROUTES.VIEW_CLIENTS.replace(':id', id)),
-                onEdit: () => navigate(PATH_ROUTES.EDIT_CLIENTS.replace(':id', id)),
+                onView: () => navigate(PATH_ROUTES.PRIVATE.VIEW_CLIENTS.replace(':id', id)),
+                onEdit: () => navigate(PATH_ROUTES.PRIVATE.EDIT_CLIENTS.replace(':id', id)),
                 onRemove: () => deleteClient(id),
                 canRenderView: true,
                 canRenderEdit: true,
@@ -83,7 +83,7 @@ export const SearchClients = () => {
                 onChangeActiveOnly={handleChangeActiveOnly}
                 onChangePage={handleChangePage}
                 onChangeTerm={handleChangeTerm}
-                onRedirectAdd={() => navigate(PATH_ROUTES.ADD_CLIENTS)}
+                onRedirectAdd={() => navigate(PATH_ROUTES.PRIVATE.ADD_CLIENTS)}
             />
         </div>
     )

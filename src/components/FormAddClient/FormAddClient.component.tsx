@@ -68,8 +68,7 @@ export const FormAddClient = () => {
         try {
             var { data } = await callPostAddClient(form)
 
-            console.log(data)
-            navigate(PATH_ROUTES.SEARCH_CLIENTS)
+            navigate(PATH_ROUTES.PRIVATE.SEARCH_CLIENTS)
             toast.success(data.message)
         } catch { }
     }
@@ -133,7 +132,7 @@ export const FormAddClient = () => {
             </div>
             <div className="form-add-client__container__buttons">
                 <Button name="Salvar" onClick={postAddClient} classname="form-add-client__container__buttons__save" />
-                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.SEARCH_CLIENTS)} classname="form-add-client__container__buttons__cancel" />
+                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_CLIENTS)} classname="form-add-client__container__buttons__cancel" />
             </div>
         </form>
     )

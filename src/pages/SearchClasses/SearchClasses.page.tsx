@@ -45,8 +45,8 @@ export const SearchClasses = () => {
                 canView: true,
                 canEdit: true,
                 canRemove: false,
-                onView: () => navigate(PATH_ROUTES.VIEW_CLASSES.replace(':id', id)),
-                onEdit: () => navigate(PATH_ROUTES.EDIT_CLASSES.replace(':id', id)),
+                onView: () => navigate(PATH_ROUTES.PRIVATE.VIEW_CLASSES.replace(':id', id)),
+                onEdit: () => navigate(PATH_ROUTES.PRIVATE.EDIT_CLASSES.replace(':id', id)),
                 onRemove: () => null,
                 canRenderView: true,
                 canRenderEdit: true,
@@ -67,7 +67,7 @@ export const SearchClasses = () => {
                 onClick={getAllClasses}
                 onChangePage={handleChangePage}
                 onChangeTerm={handleChangeTerm}
-                onRedirectAdd={() => navigate(PATH_ROUTES.ADD_CLASSES)}
+                onRedirectAdd={() => navigate(PATH_ROUTES.PRIVATE.ADD_CLASSES)}
             />
         </div>
     )

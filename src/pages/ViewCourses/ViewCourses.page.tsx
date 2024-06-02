@@ -9,7 +9,7 @@ import './ViewCourses.style.scss';
 export const ViewCourses = () => {
     const location = useLocation()
 
-    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.VIEW_COURSES.replace(':id', ''), ''))
+    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.PRIVATE.VIEW_COURSES.replace(':id', ''), ''))
 
     return (
         <div className={classNames('view-courses__container')}>

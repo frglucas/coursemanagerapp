@@ -16,7 +16,7 @@ export const Login = () => {
     useEffect(() => {
         if (location?.state?.isSignOut) sessionStorage.removeItem('token')
         else if (sessionStorage.getItem('token') !== null) {
-            navigate(PATH_ROUTES.DASHBOARD)
+            navigate(PATH_ROUTES.PRIVATE.DASHBOARD)
             return;
         }
         console.log(process.env)

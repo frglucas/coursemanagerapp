@@ -9,7 +9,7 @@ import './EditCourses.style.scss';
 export const EditCourses = () => {
     const location = useLocation()
 
-    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.EDIT_COURSES.replace(':id', ''), ''))
+    const [id, ] = useState<string>(location.pathname.replace(PATH_ROUTES.PRIVATE.EDIT_COURSES.replace(':id', ''), ''))
 
     return (
         <div className={classNames('edit-courses__container')}>

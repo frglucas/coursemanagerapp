@@ -50,7 +50,7 @@ export const FormEditCourse = ({ id }: Props) => {
         try {
             const { data } = await callPutEditCourse(form)
             toast.success(data.message)
-            navigate(PATH_ROUTES.SEARCH_COURSES)
+            navigate(PATH_ROUTES.PRIVATE.SEARCH_COURSES)
         } catch { }
     }
 
@@ -70,7 +70,7 @@ export const FormEditCourse = ({ id }: Props) => {
             <Textarea value={description} label='Descrição' onChange={handleChangeDescription} placeholder={DESCRIPTION_PLACEHOLDER} />
             <div className="form-edit-course__container__buttons">
                 <Button name="Salvar" onClick={putEditCourse} classname="form-edit-course__container__buttons__save" />
-                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.SEARCH_COURSES)} classname="form-edit-course__container__buttons__cancel" />
+                <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_COURSES)} classname="form-edit-course__container__buttons__cancel" />
             </div>
         </form>
     )
