@@ -12,6 +12,11 @@ export const MENU_ROUTES: Array<MenuRoute> = [
         path: PATH_ROUTES.PRIVATE.SEARCH_CLIENTS, 
         icon: 'Clients'
     },
+    {
+        name: 'Potenciais Clientes',
+        path: PATH_ROUTES.PRIVATE.SEARCH_LEADS,
+        icon: 'Lead'
+    },
     { 
         name: 'Cursos', 
         path: PATH_ROUTES.PRIVATE.SEARCH_COURSES, 
@@ -21,5 +26,5 @@ export const MENU_ROUTES: Array<MenuRoute> = [
         name: 'Turmas', 
         path: PATH_ROUTES.PRIVATE.SEARCH_CLASSES, 
         icon: 'Group'
-    },
+    }    
 ]

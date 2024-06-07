@@ -1,6 +1,6 @@
 export const PATH_ROUTES = {
     PUBLIC: {
-        SOURCE: '/',
+        SOURCE: '',
         LOGIN: '/login',
         REGISTER: '/register',
         ERROR: '/error',
@@ -19,6 +19,10 @@ export const PATH_ROUTES = {
         ADD_CLASSES: '/classes/add',
         VIEW_CLASSES: '/classes/view/:id',
         EDIT_CLASSES: '/classes/edit/:id',
-        SEARCH_CLASSES: '/classes/search'
+        SEARCH_CLASSES: '/classes/search',
+        ADD_LEADS: '/leads/add',
+        EDIT_LEADS: '/leads/edit/:id',
+        VIEW_LEADS: '/leads/view/:id',
+        SEARCH_LEADS: '/leads/search'
     }
 }
