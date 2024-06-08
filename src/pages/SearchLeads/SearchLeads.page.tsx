@@ -49,7 +49,7 @@ export const SearchLeads = () => {
                 onRemove: () => console.log('onRemove'),
                 canRenderView: true,
                 canRenderEdit: true,
-                canRenderRemove: true
+                canRenderRemove: false
             }
         }))
     }

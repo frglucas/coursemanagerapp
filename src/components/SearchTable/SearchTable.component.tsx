@@ -26,12 +26,17 @@ type Props = {
 
 export const SearchTable = ({ headerValues, bodyValues, activeOnly = false, term, pageCount, page, classname, onRedirectAdd,  onClick, onChangeActiveOnly, onChangePage, onChangeTerm }: Props) => {
 
+    const handleSubmitForm = (event: ChangeEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        onClick()
+    }
+
     const renderHeader = () => (
         <div className='search-table__container__header'>
-            <div className='search-table__container__header__search'>
+            <form action='none' onSubmit={handleSubmitForm} className='search-table__container__header__search'>
                 <Input value={term} placeholder='Digite algo aqui...' onChange={onChangeTerm} classname='search-table__container__header__search__input' />
                 <ButtonWithIcon icon='Search' onClick={onClick} classname='search-table__container__header__search__button' />
-            </div>
+            </form>
             <div className='search-table__container__header__options'>
                 { !!onChangeActiveOnly && <Checkbox checked={activeOnly} label='Apenas ativos' onChange={onChangeActiveOnly} classname='search-table__container__header__options__checkbox' /> }
                 { !!onRedirectAdd && <Button name='Adicionar' classname='search-table__container__header__options__button-add' onClick={onRedirectAdd} /> }

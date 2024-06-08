@@ -11,3 +11,12 @@ export type AddLeadForm = {
     phoneNumber: string,
     observation: string
 }
+
+export type EditLeadForm = {
+    leadId: string,
+    fullName: string,
+    email: string,
+    areaCode: string,
+    phoneNumber: string,
+    observation: string
+}

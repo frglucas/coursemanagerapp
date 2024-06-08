@@ -7,7 +7,7 @@ type Notification = {
 }
 
 export const api : AxiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_API_PATH,
+    baseURL: 'http://localhost:5202/api/v1/',
     headers: { "Content-Type": 'application/json' }
 })
 
