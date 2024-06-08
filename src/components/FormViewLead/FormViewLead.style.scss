@@ -1,0 +1,56 @@
+.form-view-lead {
+
+    &__container {
+        width: 100%;
+        height: max-content;
+
+        &__phone-number {
+            display: flex;
+            width: 350px;
+            justify-content: space-between;
+
+            &__area-code {
+                width: 70px;
+            }
+
+            &__number {
+                width: calc(98% - 70px);
+            }
+        }
+
+        &__buttons {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            &__edit {
+                width: 32%;
+
+                button {
+                    background-color: #ffa500;
+                    border-color: #ffa500;
+                }
+            }
+            
+            &__remove {
+                width: 32%;
+
+                button {
+                    background-color: #ff0000;
+                    border-color: #ff0000;
+                }
+            }
+            
+            &__back {
+                width: 32%;
+
+                button {
+                    background-color: transparent;
+                    color: var(--blue-primary);
+                    border-color: var(--blue-primary);
+                }
+            }
+        }
+    }
+}

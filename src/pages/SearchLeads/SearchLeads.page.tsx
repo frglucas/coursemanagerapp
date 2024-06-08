@@ -56,7 +56,7 @@ export const SearchLeads = () => {
 
     return (
         <div className='search-leads__container'>
-            <Title name="Buscar Clientes em Potencial" />
+            <Title name="Buscar Potenciais Clientes" />
             <SearchTable 
                 headerValues={SEARCH_TABLE_HEADERS.LEADS} 
                 bodyValues={getLeads()}
