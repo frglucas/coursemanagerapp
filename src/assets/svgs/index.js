@@ -23,6 +23,7 @@ import { default as Search } from './search'
 import { default as View } from './view'
 import { default as Edit } from './edit'
 import { default as Remove } from './remove'
+import { default as Lead } from './lead'
 
 export const ICONS = {
     Hat: Hat,
@@ -49,5 +50,6 @@ export const ICONS = {
     Search: Search,
     View: View,
     Edit: Edit,
-    Remove: Remove
+    Remove: Remove,
+    Lead: Lead
 }

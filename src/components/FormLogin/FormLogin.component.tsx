@@ -35,12 +35,16 @@ export const FormLogin = ({ handle }: Props) => {
         }
     }
 
+    const handleSubmitForm = (event: ChangeEvent<HTMLFormElement>) => {
+        event.preventDefault()
+    }
+
     return (
-        <form action="none" className={classNames('form-login-component__container')}>
+        <form action='none' onSubmit={handleSubmitForm} className={classNames('form-login-component__container')}>
             <Title name='Login' classname='form-login-component__container__title' />
             <Input label='Email' value={email} onChange={handleChangeEmail} placeholder='example@email.com'/>
             <Input label='Senha' value={password} onChange={handleChangePassword} type="password" autocomplete={true} />
-            <Button name='Entrar' onClick={handleLogin} />
+            <Button type='submit' name='Entrar' onClick={handleLogin} />
             <span className='form-login-component__container__span'>
                 ou <NavLink to={PATH_ROUTES.PUBLIC.REGISTER}>Cadastre-se</NavLink>
             </span>

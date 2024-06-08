@@ -8,7 +8,7 @@ import './Error.style.scss'
 export const Error = () => {
     const navigate = useNavigate()
 
-    const handleClickButton = () => navigate(PATH_ROUTES.PUBLIC.SOURCE)
+    const handleClickButton = () => navigate(PATH_ROUTES.PRIVATE.DASHBOARD)
 
     const renderLeft = () => (
         <div className={'error-page__container__left'}>

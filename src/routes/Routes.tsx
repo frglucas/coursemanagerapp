@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom"
 import { Wrapped } from "../components"
 import { PATH_ROUTES } from "../constants"
-import { AddClasses, AddClients, AddCourse, Dashboard, EditClasses, EditClients, EditCourses, Error, Login, Register, SearchClasses, SearchClients, SearchCourses, ViewClasses, ViewClients, ViewCourses } from "../pages"
+import { AddClasses, AddClients, AddCourse, AddLeads, Dashboard, EditClasses, EditClients, EditCourses, EditLeads, Error, Login, Register, SearchClasses, SearchClients, SearchCourses, SearchLeads, ViewClasses, ViewClients, ViewCourses, ViewLeads } from "../pages"
 
 type PageProps = (props: any) => JSX.Element
 
@@ -40,6 +40,10 @@ export const ROUTES : RouteTypes = {
         { path: PATH_ROUTES.PRIVATE.VIEW_CLASSES, element: renderPageWithMenu(ViewClasses) },
         { path: PATH_ROUTES.PRIVATE.EDIT_CLASSES, element: renderPageWithMenu(EditClasses) },
         { path: PATH_ROUTES.PRIVATE.SEARCH_CLASSES, element: renderPageWithMenu(SearchClasses) },
+        { path: PATH_ROUTES.PRIVATE.SEARCH_LEADS, element: renderPageWithMenu(SearchLeads) },
+        { path: PATH_ROUTES.PRIVATE.ADD_LEADS, element: renderPageWithMenu(AddLeads) },
+        { path: PATH_ROUTES.PRIVATE.VIEW_LEADS, element: renderPageWithMenu(ViewLeads) },
+        { path: PATH_ROUTES.PRIVATE.EDIT_LEADS, element: renderPageWithMenu(EditLeads) },
     ],
     PUBLIC: [
         { path: PATH_ROUTES.PUBLIC.LOGIN, element: renderPageWithoutMenu(Login) },
