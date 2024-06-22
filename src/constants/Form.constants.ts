@@ -1,4 +1,11 @@
 export const FORM_ADD_CLIENT = {
+    RADIO_INDICATOR_IS_CAPTIVATOR: {
+        DEFAULT: 'true',
+        VALUES: [
+            { label: 'Captador', value: 'true' },
+            { label: 'Outro', value: 'false' }
+        ]
+    },
     RADIO_DOCUMENT_TYPE: {
         DEFAULT: '1',
         VALUES: [
