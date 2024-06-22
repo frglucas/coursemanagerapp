@@ -34,6 +34,7 @@ export const FormViewClient = ({ id }: Props) => {
     const [captivator, setCaptivator] = useState<string>('')
     const [indicator, setIndicator] = useState<string>('')
     const [indicatorIsCaptivator, setIndicatorIsCaptivator] = useState<string>('')
+    const [observation, setObservation] = useState<string>('')
 
     const [allOccupations, setAllOccupations] = useState<Array<SelectOption>>([])
     const [allGenders, setAllGenders] = useState<Array<SelectOption>>([])
@@ -102,6 +103,7 @@ export const FormViewClient = ({ id }: Props) => {
             setCaptivator(data.captivatorId)
             setIndicator(data.indicatorId)
             setIndicatorIsCaptivator(data.indicatorIsCaptivator)
+            setObservation(data.observation)
         } catch { }
     }
 
@@ -151,6 +153,7 @@ export const FormViewClient = ({ id }: Props) => {
                     <ReadOnly value={isActive ? 'Sim' : 'Não'} label='Ativo' />
                 </div>
             </div>
+            <ReadOnly label='Observação' value={observation} />
             <div className='form-view-client__container__buttons'>
                 <Button name='Editar' disabled={!isActive} onClick={() => navigate(PATH_ROUTES.PRIVATE.EDIT_CLIENTS.replace(':id', clientId))} classname='form-view-client__container__buttons__edit' />
                 <Button name='Inativar' disabled={!isActive} onClick={deleteClient} classname='form-view-client__container__buttons__remove' />

@@ -33,12 +33,15 @@ export const FormAddClient = () => {
     const [indicator, setIndicator] = useState<string>('none')
     const [indicatorIsCaptivator, setIndicatorIsCaptivator] = useState<string>(FORM_ADD_CLIENT.RADIO_INDICATOR_IS_CAPTIVATOR.DEFAULT)
     const [observation, setObservation] = useState<string>(state?.observation ?? '')
+    const [areaCode, setAreaCode] = useState<string>(state?.areaCode ?? FORM_ADD_CLIENT.SELECT_AREA_CODE.DEFAULT)
+    const [phoneNumber, setPhoneNumber] = useState<string>(state?.phoneNumber ?? '')
     // end form region
 
     const [allOccupations, setAllOccupations] = useState<Array<SelectOption>>([])
     const [allGenders, setAllGenders] = useState<Array<SelectOption>>([])
     const [allUsers, setAllUsers] = useState<Array<SelectOption>>([])
     const [allIndicators, setAllIndicators] = useState<Array<SelectOption>>([])
+    const [allAreaCodes, ] = useState<Array<SelectOption>>(FORM_ADD_CLIENT.SELECT_AREA_CODE.VALUES)
 
     const { call: callGetAllOccupations } = useGetAllOccupations()
     const { call: callPostAddClient } = usePostAddClient()
@@ -96,7 +99,9 @@ export const FormAddClient = () => {
             genderDetail: genderDetail,
             indicatorIsCaptivator: (indicatorIsCaptivator === 'true'),
             indicatorId: (indicator === 'none') ? null : indicator,
-            captivatorId: (captivator === 'none') ? null : captivator
+            captivatorId: (captivator === 'none') ? null : captivator,
+            observation: observation,
+            phoneNumbers: [{ areaCode: areaCode, phoneNumber: phoneNumber }]
         }
 
         try {
@@ -165,6 +170,13 @@ export const FormAddClient = () => {
     
     const handleChangeObservation = (event: ChangeEvent<HTMLTextAreaElement>) => setObservation(event.target.value)
 
+    const handleChangeAreaCode = (event: ChangeEvent<HTMLSelectElement>) => setAreaCode(event.target.value)
+
+    const handleChangePhoneNumber = (event: ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault()
+        setPhoneNumber(event.target.value)
+    }
+
     return (
         <form action="none" className="form-add-client__container">
             <div className="form-add-client__container__name-content">
@@ -175,13 +187,17 @@ export const FormAddClient = () => {
             <div className="form-add-client__container__sides">
                 <div className="form-add-client__container__sides__left">
                     <RadioCheck selected={documentType} label="Tipo de Documento" options={FORM_ADD_CLIENT.RADIO_DOCUMENT_TYPE.VALUES} onChange={handleChangeDocumentType} />
-                    <Input value={document} label="Documento" onChange={handleChangeDocument} placeholder={documentType === 'CPF' ? 'ex.: 000.000.000-00' : 'ex.: 00.000.000/0000-00'} />
+                    <Input value={document} label="Documento" onChange={handleChangeDocument} placeholder={documentType === '1' ? 'ex.: 000.000.000-00' : 'ex.: 00.000.000/0000-00'} />
                     <Select value={captivator} label="Captador" options={allUsers} onChange={handleChangeCaptivator} />
                     <RadioCheck selected={indicatorIsCaptivator}  label={'Indicado por:'} options={FORM_ADD_CLIENT.RADIO_INDICATOR_IS_CAPTIVATOR.VALUES} onChange={handleChangeIndicatorIsCaptivator} />
                     { (indicatorIsCaptivator === 'false') && <Select value={indicator} label="Indicador" options={allIndicators} onChange={handleChangeIndicator} /> }
                 </div>
                 <div className="form-add-client__container__sides__right">
                     { (documentType === '1') && <CalendarPicker label="Data de nascimento" value={birthDate} onChange={handleChangeBirthDate} /> }
+                    <div className='form-add-client__container__sides__right__phone-number'>
+                        <Select label='DDD' value={areaCode} options={allAreaCodes} onChange={handleChangeAreaCode} classname='form-add-lead__container__phone-number__area-code'/>
+                        <Input value={phoneNumber} label="Número de celular" onChange={handleChangePhoneNumber} placeholder="ex.: 98765-4321" classname='form-add-lead__container__phone-number__number' />
+                    </div>
                     { (documentType === '1') && <Select value={occupation} label="Profissão" options={allOccupations} onChange={handleChangeOccupation} /> }
                     { (documentType === '1') && <Select value={gender} label="Gênero" options={allGenders} onChange={handleChangeGender} /> }
                     { ( gender === '3' ) && <Input value={genderDetail} label="Especifique" onChange={handleChangeGenderDetail} /> }

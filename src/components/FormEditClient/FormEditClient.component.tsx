@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 import { Occupation } from '../../models/Occupation/Occupation.models';
 import { usePutEditClient } from '../../hooks/Client/use-put-edit-client.hook';
 import { toast } from 'react-toastify';
+import { Textarea } from '../Textarea/Textarea.component';
 
 type Props = {
     id: string
@@ -34,6 +35,7 @@ export const FormEditClient = ({ id }: Props) => {
     const [captivator, setCaptivator] = useState<string>('none')
     const [indicator, setIndicator] = useState<string>('none')
     const [indicatorIsCaptivator, setIndicatorIsCaptivator] = useState<string>(FORM_ADD_CLIENT.RADIO_INDICATOR_IS_CAPTIVATOR.DEFAULT)
+    const [observation, setObservation] = useState<string>('')
 
     const [allOccupations, setAllOccupations] = useState<Array<SelectOption>>([])
     const [allGenders, setAllGenders] = useState<Array<SelectOption>>([])
@@ -100,6 +102,7 @@ export const FormEditClient = ({ id }: Props) => {
             setCaptivator(data.captivatorId)
             setIndicatorIsCaptivator(`${data.indicatorId === ''}`)
             setIndicator(data.indicatorId)
+            setObservation(data.observation)
         } catch { }
     }
 
@@ -126,7 +129,8 @@ export const FormEditClient = ({ id }: Props) => {
             genderDetail: genderDetail,
             indicatorId: indicator,
             captivatorId: captivator,
-            indicatorIsCaptivator: (indicatorIsCaptivator === 'true')
+            indicatorIsCaptivator: (indicatorIsCaptivator === 'true'),
+            observation: observation
         }
 
         try {
@@ -185,6 +189,7 @@ export const FormEditClient = ({ id }: Props) => {
     
     const handleChangeGenderDetail = (event: ChangeEvent<HTMLInputElement>) => setGenderDetail(event.target.value)
 
+    const handleChangeObservation = (event: ChangeEvent<HTMLTextAreaElement>) => setObservation(event.target.value)
 
     return (
         <form action="none" className="form-edit-client__container">
@@ -209,6 +214,7 @@ export const FormEditClient = ({ id }: Props) => {
                     <RadioCheck selected={isSmoker} label='Fumante' options={FORM_ADD_CLIENT.RADIO_IS_SMOKER.VALUES} onChange={handleChangeIsSmoker} />
                 </div>
             </div>
+            <Textarea label="Observação" value={observation} onChange={handleChangeObservation} maxLength={512} />
             <div className="form-edit-client__container__buttons">
                 <Button name="Salvar" onClick={putEditClient} classname="form-edit-client__container__buttons__save" />
                 <Button name="Cancelar" onClick={() => navigate(PATH_ROUTES.PRIVATE.SEARCH_CLIENTS)} classname="form-edit-client__container__buttons__cancel" />

@@ -39,6 +39,20 @@
 
             &__right {
                 width: 48%;
+
+                &__phone-number {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-between;
+        
+                    &__area-code {
+                        width: 70px;
+                    }
+        
+                    &__number {
+                        width: calc(98% - 70px);
+                    }
+                }
             }
         }
 

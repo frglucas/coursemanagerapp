@@ -12,7 +12,14 @@ export type AddClientForm = {
     genderDetail: string,
     indicatorIsCaptivator: boolean,
     indicatorId: string | null,
-    captivatorId: string | null
+    captivatorId: string | null,
+    observation: string,
+    phoneNumbers: Array<PhoneNumber>
+}
+
+type PhoneNumber = {
+    areaCode: string,
+    phoneNumber: string
 }
 
 export type EditClientForm = {
@@ -29,7 +36,8 @@ export type EditClientForm = {
     genderDetail: string,
     indicatorId: string,
     captivatorId: string,
-    indicatorIsCaptivator: boolean
+    indicatorIsCaptivator: boolean,
+    observation: string
 }
 
 export type SearchClient = {
