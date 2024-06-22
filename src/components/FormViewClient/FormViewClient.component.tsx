@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import './FormViewClient.style.scss';
 import { FORM_ADD_CLIENT, PATH_ROUTES } from '../../constants';
-import { SelectOption } from '../../models';
-import { useDeleteClient, useGetAllOccupations, useGetClientById } from '../../hooks';
+import { ClientBasic, SelectOption, UserBasic } from '../../models';
+import { useDeleteClient, useGetAllClients, useGetAllOccupations, useGetAllUsers, useGetClientById } from '../../hooks';
 import { Occupation } from '../../models/Occupation/Occupation.models';
 import classNames from 'classnames';
 import { ReadOnly } from '../ReadOnly/ReadOnly.component';
@@ -30,13 +30,21 @@ export const FormViewClient = ({ id }: Props) => {
     const [occupation, setOccupation] = useState<string>('none')
     const [isSmoker, setIsSmoker] = useState<string>(FORM_ADD_CLIENT.RADIO_IS_SMOKER.DEFAULT)
     const [isActive, setIsActive] = useState<boolean>(false)
+    const [creator, setCreator] = useState<string>('')
+    const [captivator, setCaptivator] = useState<string>('')
+    const [indicator, setIndicator] = useState<string>('')
+    const [indicatorIsCaptivator, setIndicatorIsCaptivator] = useState<string>('')
 
     const [allOccupations, setAllOccupations] = useState<Array<SelectOption>>([])
     const [allGenders, setAllGenders] = useState<Array<SelectOption>>([])
+    const [allUsers, setAllUsers] = useState<Array<SelectOption>>([])
+    const [allIndicators, setAllIndicators] = useState<Array<SelectOption>>([])
 
     const { call: callGetAllOccupations } = useGetAllOccupations()
     const { call: callGetClient } = useGetClientById()
     const { call: callDeleteClient } = useDeleteClient()
+    const { call: callGetAllUsers } = useGetAllUsers()
+    const { call: callGetAllClients } = useGetAllClients()
 
     const getAllOccupations = async () => {
         var { data } = await callGetAllOccupations()
@@ -52,6 +60,26 @@ export const FormViewClient = ({ id }: Props) => {
         var values : Array<SelectOption> = FORM_ADD_CLIENT.SELECT_GENDER.VALUES
 
         setAllGenders(values)
+    }
+
+    const getAllUsers = async () => {
+        var { data } = await callGetAllUsers()
+
+        var users : Array<UserBasic> = data.data
+
+        var values : Array<SelectOption> = users.map(x => ({ value: x.id, label: `${x.name} (${x.email})` }))
+
+        setAllUsers(values)
+    }
+    
+    const getAllIndicators = async () => {
+        var { data } = await callGetAllClients()
+
+        var users : Array<ClientBasic> = data.data
+
+        var values : Array<SelectOption> = users.map(x => ({ value: x.id, label: `${x.name} (${x.email})` }))
+
+        setAllIndicators(values)
     }
 
     const getClient = async () => {
@@ -70,12 +98,18 @@ export const FormViewClient = ({ id }: Props) => {
             setGenderDetail(data.genderDetails)
             setIsSmoker(`${data.isSmoker}`)
             setIsActive(data.isActive)
+            setCreator(data.creatorId)
+            setCaptivator(data.captivatorId)
+            setIndicator(data.indicatorId)
+            setIndicatorIsCaptivator(data.indicatorIsCaptivator)
         } catch { }
     }
 
     useEffect(() => {
         getAllOccupations()
         getAllGenders()
+        getAllUsers()
+        getAllIndicators()
         getClient()
     }, [])
 
@@ -87,6 +121,12 @@ export const FormViewClient = ({ id }: Props) => {
         getClient()
     }
 
+    const getIndicator = () => {
+        if (indicatorIsCaptivator)
+            return allUsers.find(x => x.value === captivator)?.label ?? ''
+        else return allIndicators.find(x => x.value === indicator)?.label ?? ''
+    }
+
     return (
         <div className={classNames('form-view-client__container')}>
             <div className="form-view-client__container__name-content">
@@ -96,16 +136,19 @@ export const FormViewClient = ({ id }: Props) => {
             <ReadOnly value={email} label='Email' />
             <div className="form-view-client__container__sides">
                 <div className="form-view-client__container__sides__left">
-                    <ReadOnly value={format(birthDate, 'dd/MM/yyyy')} label='Data de nascimento' />
-                    <ReadOnly value={allOccupations.find(x => x.value === occupation)?.label ?? ''} label='Profissão' />
-                    <ReadOnly value={allGenders.find(x => x.value === gender)?.label ?? ''} label='Gênero' />
-                    { (gender === '3') &&  <ReadOnly value={genderDetail} label='Especifique' /> }
-                    <ReadOnly value={isActive ? 'Sim' : 'Não'} label='Ativo' />
-                </div>
-                <div className="form-view-client__container__sides__right">
                     <ReadOnly value={FORM_ADD_CLIENT.RADIO_DOCUMENT_TYPE.VALUES.find(x => x.value === documentType)?.label ?? ''} label='Tipo de Documento' />
                     <ReadOnly value={document} label='Documento' />
+                    <ReadOnly value={allUsers.find(x => x.value === captivator)?.label ?? ''} label='Captador' />
+                    <ReadOnly value={getIndicator()} label='Indicador' />
+                    <ReadOnly value={allUsers.find(x => x.value === creator)?.label ?? ''} label='Criador' />
+                </div>
+                <div className="form-view-client__container__sides__right">
+                    { (documentType === '1') && <ReadOnly value={format(birthDate, 'dd/MM/yyyy')} label='Data de nascimento' /> }
+                    { (documentType === '1') && <ReadOnly value={allOccupations.find(x => x.value === occupation)?.label ?? ''} label='Profissão' /> }
+                    { (documentType === '1') && <ReadOnly value={allGenders.find(x => x.value === gender)?.label ?? ''} label='Gênero' /> }
+                    { (gender === '3') &&  <ReadOnly value={genderDetail} label='Especifique' /> }
                     <ReadOnly value={FORM_ADD_CLIENT.RADIO_IS_SMOKER.VALUES.find(x => x.value === isSmoker)?.label ?? ''} label='Fumante' />
+                    <ReadOnly value={isActive ? 'Sim' : 'Não'} label='Ativo' />
                 </div>
             </div>
             <div className='form-view-client__container__buttons'>

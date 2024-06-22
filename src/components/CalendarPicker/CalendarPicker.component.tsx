@@ -2,7 +2,7 @@ import classNames from "classnames";
 
 import './CalendarPicker.style.scss';
 import { ChangeEvent } from "react";
-import { addMinutes, format } from "date-fns";
+import { addMinutes, addYears, format } from "date-fns";
 
 type Props = {
     value: Date,
@@ -16,6 +16,13 @@ export const CalendarPicker = ({ value, label, type = 'date', classname, onChang
 
     const newFormat = (type === 'date') ? "yyyy-MM-dd" : "yyyy-MM-dd'T'HH:mm"
 
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        if (!event.target.value || event.target.value === '') 
+            event.target.value = '0001-01-01'
+        
+        onChange(event)
+    }
+
     return (
         <div className={classNames('calendar-picker__container', classname)}>
             { label && <label>{ label }</label> }
@@ -23,7 +30,11 @@ export const CalendarPicker = ({ value, label, type = 'date', classname, onChang
                 type={type}     
                 value={format(addMinutes(new Date(value), (new Date(value).getTimezoneOffset())), newFormat)} 
                 className={'calendar-picker__container__calendar'} 
-                onChange={onChange}
+                onChange={handleChange}
+                min={'0001-01-01T00:00'}
+                max={format(new Date(), 'yyyy-MM-dd')}
+                onKeyDown={(e) => e.preventDefault()}
+                inputMode="none"
             />
         </div>
     )
