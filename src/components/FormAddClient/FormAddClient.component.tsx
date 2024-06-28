@@ -13,6 +13,7 @@ import { useLocation, useNavigate } from "react-router-dom"
 import { Textarea } from "../Textarea/Textarea.component"
 
 import './FormAddClient.style.scss';
+import { format } from "date-fns"
 
 export const FormAddClient = () => {
     const { state } = useLocation()
@@ -193,7 +194,7 @@ export const FormAddClient = () => {
                     { (indicatorIsCaptivator === 'false') && <Select value={indicator} label="Indicador" options={allIndicators} onChange={handleChangeIndicator} /> }
                 </div>
                 <div className="form-add-client__container__sides__right">
-                    { (documentType === '1') && <CalendarPicker label="Data de nascimento" value={birthDate} onChange={handleChangeBirthDate} /> }
+                    { (documentType === '1') && <CalendarPicker max={format(new Date(), 'yyyy-MM-dd')} label="Data de nascimento" value={birthDate} onChange={handleChangeBirthDate} /> }
                     <div className='form-add-client__container__sides__right__phone-number'>
                         <Select label='DDD' value={areaCode} options={allAreaCodes} onChange={handleChangeAreaCode} classname='form-add-lead__container__phone-number__area-code'/>
                         <Input value={phoneNumber} label="Número de celular" onChange={handleChangePhoneNumber} placeholder="ex.: 98765-4321" classname='form-add-lead__container__phone-number__number' />

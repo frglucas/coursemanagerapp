@@ -18,6 +18,7 @@ export const PATH_ROUTES = {
         SEARCH_COURSES: '/courses/search',
         ADD_CLASSES: '/classes/add',
         VIEW_CLASSES: '/classes/view/:id',
+        MANAGE_CLASS: '/classes/manage/:id',
         EDIT_CLASSES: '/classes/edit/:id',
         SEARCH_CLASSES: '/classes/search',
         ADD_LEADS: '/leads/add',

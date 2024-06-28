@@ -1,0 +1,82 @@
+.form-add-payment {
+    
+    &__container {
+        width: 950px;
+        height: 700px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar {
+            width: 0px;
+        }
+        
+        &::-webkit-scrollbar-track {
+            border-radius: 10px;
+            background-color: transparent;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: var(--blue-primary);
+        }
+
+        @media (max-width: 810px) {
+            width: 350px;
+            height: 600px;
+        }
+
+        &__header {
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            @media (max-width: 810px) {
+                height: 168px;
+                justify-content: start;
+                flex-direction: column;
+            }
+
+            &__label {
+                width: 48%;
+
+                @media (max-width: 810px) {
+                    width: 100%;
+                }
+            }
+        }
+
+        &__button-add {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 80px;
+        }
+
+        &__form-add {
+            margin-bottom: 10px;
+            width: 100%;
+
+            &__form {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                @media (max-width: 810px) {
+                    flex-direction: column;
+                }
+
+                &__input {
+                    width: 32% !important;
+
+                    @media (max-width: 810px) {
+                        width: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+}

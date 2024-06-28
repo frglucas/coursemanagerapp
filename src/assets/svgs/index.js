@@ -24,6 +24,9 @@ import { default as View } from './view'
 import { default as Edit } from './edit'
 import { default as Remove } from './remove'
 import { default as Lead } from './lead'
+import { default as Close } from './close'
+import { default as Add } from './add'
+import { default as Check } from './check'
 
 export const ICONS = {
     Hat: Hat,
@@ -51,5 +54,8 @@ export const ICONS = {
     View: View,
     Edit: Edit,
     Remove: Remove,
-    Lead: Lead
+    Lead: Lead,
+    Close: Close,
+    Add: Add,
+    Check: Check
 }

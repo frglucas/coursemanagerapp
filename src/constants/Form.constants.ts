@@ -111,3 +111,22 @@ export const FORM_ADD_CLASS = {
         ]
     }
 }
+
+export const FORM_ADD_PAYMENT = {
+    PAYMENT_STATUS: {
+        DEFAULT: '1',
+        VALUES: [
+            { label: 'Não Pago', value: '1' },
+            { label: 'Pago', value: '2' }
+        ]
+    },
+    PAYMENT_METHOD: {
+        DEFAULT: '1',
+        VALUES: [
+            { label: 'Dinheiro', value: '1' },
+            { label: 'Cartão de Crédito', value: '2' },
+            { label: 'Cartão de Débito', value: '3' },
+            { label: 'Pix', value: '4' },
+        ]
+    }
+}
