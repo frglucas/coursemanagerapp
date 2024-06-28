@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom"
 import { Wrapped } from "../components"
 import { PATH_ROUTES } from "../constants"
-import { AddClasses, AddClients, AddCourse, AddLeads, Dashboard, EditClasses, EditClients, EditCourses, EditLeads, Error, Login, Register, SearchClasses, SearchClients, SearchCourses, SearchLeads, ViewClasses, ViewClients, ViewCourses, ViewLeads } from "../pages"
+import { AddClasses, AddClients, AddCourse, AddLeads, Dashboard, EditClasses, EditClients, EditCourses, EditLeads, Error, Login, ManageClass, Register, SearchClasses, SearchClients, SearchCourses, SearchLeads, ViewClasses, ViewClients, ViewCourses, ViewLeads } from "../pages"
 
 type PageProps = (props: any) => JSX.Element
 
@@ -38,6 +38,7 @@ export const ROUTES : RouteTypes = {
         { path: PATH_ROUTES.PRIVATE.SEARCH_COURSES, element: renderPageWithMenu(SearchCourses) },
         { path: PATH_ROUTES.PRIVATE.ADD_CLASSES, element: renderPageWithMenu(AddClasses) },
         { path: PATH_ROUTES.PRIVATE.VIEW_CLASSES, element: renderPageWithMenu(ViewClasses) },
+        { path: PATH_ROUTES.PRIVATE.MANAGE_CLASS, element: renderPageWithMenu(ManageClass) },
         { path: PATH_ROUTES.PRIVATE.EDIT_CLASSES, element: renderPageWithMenu(EditClasses) },
         { path: PATH_ROUTES.PRIVATE.SEARCH_CLASSES, element: renderPageWithMenu(SearchClasses) },
         { path: PATH_ROUTES.PRIVATE.SEARCH_LEADS, element: renderPageWithMenu(SearchLeads) },

@@ -1,0 +1,56 @@
+.modal {
+
+    &__container {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        background: rgba(0, 0, 0, 0.8);
+
+        &__content {
+            background-color: var(--whitesmoke);
+            border-radius: 8px;
+
+            &__header {
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+
+                span {
+                    font-size: 18px;
+                    font-weight: 600;
+                }
+
+                &__close {
+                    position: absolute;
+                    right: 5px;
+                    top: 7px;
+
+                    button {
+                        background-color: transparent;
+                        border: none;
+
+                        svg {
+                            fill: black;
+                        }
+                        
+                        &:hover {
+                            transform: scale(1);
+                        }
+                    }
+                }
+            }
+
+            &__body {
+                width: 100%;
+                height: calc(100% - 60px);
+                padding: 15px;
+            }
+        }
+    }
+}

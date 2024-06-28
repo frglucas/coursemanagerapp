@@ -13,6 +13,7 @@ import { Occupation } from '../../models/Occupation/Occupation.models';
 import { usePutEditClient } from '../../hooks/Client/use-put-edit-client.hook';
 import { toast } from 'react-toastify';
 import { Textarea } from '../Textarea/Textarea.component';
+import { format } from 'date-fns';
 
 type Props = {
     id: string
@@ -207,7 +208,7 @@ export const FormEditClient = ({ id }: Props) => {
                     { (indicatorIsCaptivator === 'false') && <Select value={indicator} label="Indicador" options={allIndicators} onChange={handleChangeIndicator} /> }
                 </div>
                 <div className="form-edit-client__container__sides__right">
-                    { (documentType === '1') && <CalendarPicker label="Data de nascimento" value={birthDate} onChange={handleChangeBirthDate} /> }
+                    { (documentType === '1') && <CalendarPicker max={format(new Date(), 'yyyy-MM-dd')} label="Data de nascimento" value={birthDate} onChange={handleChangeBirthDate} /> }
                     { (documentType === '1') && <Select value={occupation} label="Profissão" options={allOccupations} onChange={handleChangeOccupation} /> }
                     { (documentType === '1') && <Select value={gender} label="Gênero" options={allGenders} onChange={handleChangeGender} /> }
                     { ( gender === '3' ) && <Input value={genderDetail} label="Especifique" onChange={handleChangeGenderDetail} /> }

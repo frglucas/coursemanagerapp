@@ -1,3 +1,3 @@
 export * from './Path.contants'
 export * from './Form.constants'
-export * from './SearchTable.constants'
+export * from './Table.constants'

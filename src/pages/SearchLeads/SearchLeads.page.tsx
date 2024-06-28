@@ -46,7 +46,7 @@ export const SearchLeads = () => {
                 canRemove: false,
                 onView: () => navigate(PATH_ROUTES.PRIVATE.VIEW_LEADS.replace(':id', id)),
                 onEdit: () => navigate(PATH_ROUTES.PRIVATE.EDIT_LEADS.replace(':id', id)),
-                onRemove: () => console.log('onRemove'),
+                onRemove: () => null,
                 canRenderView: true,
                 canRenderEdit: true,
                 canRenderRemove: false

@@ -9,10 +9,11 @@ type Props = {
     label?: string,
     type?: string,
     classname?: string,
-    onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    onChange: (event: ChangeEvent<HTMLInputElement>) => void,
+    max?: string
 }
 
-export const CalendarPicker = ({ value, label, type = 'date', classname, onChange }: Props) => {
+export const CalendarPicker = ({ value, label, type = 'date', classname, onChange, max }: Props) => {
 
     const newFormat = (type === 'date') ? "yyyy-MM-dd" : "yyyy-MM-dd'T'HH:mm"
 
@@ -32,7 +33,7 @@ export const CalendarPicker = ({ value, label, type = 'date', classname, onChang
                 className={'calendar-picker__container__calendar'} 
                 onChange={handleChange}
                 min={'0001-01-01T00:00'}
-                max={format(new Date(), 'yyyy-MM-dd')}
+                max={max}
                 onKeyDown={(e) => e.preventDefault()}
                 inputMode="none"
             />
